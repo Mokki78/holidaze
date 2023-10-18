@@ -6,6 +6,7 @@ import { Admin } from "../src/pages/Admin";
 import { Home } from "../src/pages/Home";
 import { Profile } from "./pages/Customer";
 import { SingleVenue } from "../src/pages/SingleVenue";
+import { Test } from  "../src/pages/Test";
 
 
 function Header() {
@@ -31,7 +32,9 @@ function App() {
      <Route path="/singlevenue"  element={<SingleVenue />} />
      <Route path="/profile"  element={<Profile />} />
      <Route path="/admin" element={<Admin />} />
+     <Route path="/test" element={<Test />} />
    </Routes>
+
    </Container>
    </>
   );
