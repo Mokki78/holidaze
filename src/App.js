@@ -6,6 +6,7 @@ import { Admin } from "../src/pages/Admin";
 import { Home } from "../src/pages/Home";
 import { Profile } from "./pages/Customer";
 import { SingleVenue } from "../src/pages/SingleVenue";
+import { Footer } from "../src/components/Footer";
 
 
 
@@ -32,8 +33,10 @@ function App() {
      <Route path="/singlevenue/:id"  element={<SingleVenue />} />
      <Route path="/profile"  element={<Profile />} />
      <Route path="/admin" element={<Admin />} />
+
     
    </Routes>
+   <Footer />
 
    </Container>
    </>
