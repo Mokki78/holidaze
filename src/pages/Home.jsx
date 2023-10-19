@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Card, ListGroup } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import * as ButtonStyle from "../styled.components/Button.style";
+import { Icon } from "@iconify/react";
+
+
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -38,36 +42,37 @@ export const Home = () => {
   const ShowVenues = () => {
     return (
       <>
-        <Container className="d-flex align-items-center">
-          <Row >
+        <Container className="d-flex justify-content-center align-items-center">
+          <Row>
             {venues.map((venue) => {
               return (
-                <Card style={{ width: "18rem" }}>
-                  <button
-                    onClick={() => letsNavigate(`/singleproduct/${venue.id}`)}
+          
+                  <ButtonStyle.Button
+                    onClick={() => letsNavigate(`/singlevenue/${venue.id}`)}
                     className="col-md-3 p-3"
                     key={venue.id}
                   >
-                    <Card.Body>
-                      <Card.Img
+                    <div className="card h-100 text-center p-4">
+                      <img 
+                      
                         src={venue.media}
-                        width="250px"
+                        height="250px"
                         alt={venue.title}
                       />
 
-                      <ListGroup>
-                        <ListGroup.Item>
+                      <div>
+                        <h5>
                          <strong>{venue.location.city + ", " + venue.location.country}{" "}</strong> 
-                        </ListGroup.Item>
-                        <ListGroup.Item>NOK {venue.price} ,-</ListGroup.Item>
-                        <ListGroup.Item>
+                        </h5>
+                        <p>NOK {venue.price} ,-</p>
+                        <p>
                           {venue.rating && venue.rating}
-                          <i className="fa fa-star"></i>
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Card.Body>
-                  </button>
-                </Card>
+                          <Icon icon="prime:star" height="30px" />
+                        </p>
+                      </div>
+                    </div>
+                  </ButtonStyle.Button>
+       
               );
             })}
           </Row>
@@ -80,6 +85,7 @@ export const Home = () => {
     <div className="container my-3 py-1">
       <div className="row">
         <div className="col-12 mb-5">
+          
           <hr />
         </div>
       </div>

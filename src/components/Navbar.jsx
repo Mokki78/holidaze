@@ -1,25 +1,26 @@
 import React from "react";
-import {  Container, Navbar as NavbarBs } from "react-bootstrap";
+import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
+
+
 export function NavBar() {
+  return (
+    <>
+      <Container className="menu">
+        <NavbarBs
+          sticky="top"
+          className="navbar navbar-expand-lg bg-white shadow-sm"
+        >
+          <Link  className="logo" to="/">Holidaze</Link>
+         
+       
+        
+        </NavbarBs>
+      </Container>
+    </>
+  );
+}
 
-
-    return (
-        <>
-        <Container>
-            <NavbarBs>
-                <Link to="/">Home</Link>
-                <Link to="/profile">Profile</Link>
-                <Link to="/admin">Admin</Link>
-                <Link to="/test">Test</Link>
-             
-            </NavbarBs>
-        </Container>
-        </>
-    )
-  }
-
-  export default NavBar;
-  
+export default NavBar;

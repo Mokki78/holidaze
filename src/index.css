@@ -12,3 +12,16 @@ code {
     monospace;
 }
 
+.logo {
+  font-family: scrapbooker-script, sans-serif;
+  font-style: normal;
+  font-size: 50px;
+  color: #428da8;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.menu a{
+  color: #428da8;
+  text-decoration: none;
+}
