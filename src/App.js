@@ -7,7 +7,10 @@ import { Home } from "../src/pages/Home";
 import { Profile } from "./pages/Customer";
 import { SingleVenue } from "../src/pages/SingleVenue";
 import { Footer } from "../src/components/Footer";
-
+import { Login } from "../src/pages/Login";
+import { Register } from "../src/pages/Register";
+import { Logout } from "../src/pages/Logout";
+import { LoginAdmin } from "../src/pages/Admin_login";
 
 
 function Header() {
@@ -33,6 +36,10 @@ function App() {
      <Route path="/singlevenue/:id"  element={<SingleVenue />} />
      <Route path="/profile"  element={<Profile />} />
      <Route path="/admin" element={<Admin />} />
+     <Route path="/login" element={<Login />} />
+     <Route path="/register" element={<Register />} />
+     <Route path="/logout" element={<Logout />} />
+     <Route path="/admin_login" element={<LoginAdmin />} />
 
     
    </Routes>

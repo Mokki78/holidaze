@@ -86,7 +86,7 @@ export const Home = () => {
       <div className="row">
         <div className="col-12 mb-5">
           
-          <hr />
+        
         </div>
       </div>
       <div className="row justify-content-center">
