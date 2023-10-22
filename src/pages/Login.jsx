@@ -31,6 +31,8 @@ export function Login() {
          password: password,
 
         }
+
+        
         
     const apiUrl = "https://api.noroff.dev/api/v1/holidaze/auth/login";
 
@@ -48,7 +50,9 @@ export function Login() {
         const data = await response.json();
         setIsSubmitting(false);
         localStorage.setItem("accessToken", data.accessToken);
-        navigate("/admin");
+        const userDetails = { name: data.name, pass: data.password,  avatar: data.avatar}
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        navigate("/profile");
       } else {
         setIsSubmitting(false);
         const errorData = await response.json();

@@ -4,13 +4,14 @@ import { NavBar } from "../src/components/Navbar";
 import { Container } from "react-bootstrap";
 import { Admin } from "../src/pages/Admin";
 import { Home } from "../src/pages/Home";
-import { Profile } from "./pages/Customer";
+import { Profile } from "./pages/Profile";
 import { SingleVenue } from "../src/pages/SingleVenue";
 import { Footer } from "../src/components/Footer";
 import { Login } from "../src/pages/Login";
 import { Register } from "../src/pages/Register";
 import { Logout } from "../src/pages/Logout";
 import { LoginAdmin } from "../src/pages/Admin_login";
+import { SearchBar } from "../src/components/SearchBar";
 
 
 function Header() {
@@ -18,6 +19,7 @@ function Header() {
     <>
     <div>
       <NavBar />
+      <SearchBar />
     </div>
     </>
   )
