@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { Booking } from "../components/Booking";
 
 export function SingleVenue() {
 
@@ -54,7 +55,7 @@ export function SingleVenue() {
     <Container style={{ border: "0.5px solid #E3E3E3" }} className="mt-5 mb-5">
       <Row>
        
-        <Col className="col-10-md d-flex flex-column align-items-center  pt-5 pb-md-5">
+        <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5">
             <img
               src={data.media}
               className="img-fluid"
@@ -68,14 +69,26 @@ export function SingleVenue() {
         <p>{data.location.city + ", " + data.location.country}{" "}</p>
      
           
-          <p className="p-5  bg-light">{data.description}</p>
+          <p className="p-5 bg-light">{data.description}</p>
+            <div>
+            <p>Max guests: {data.maxGuests}</p>
+            <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
+            <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
+            <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
+            <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
+            </div>
             <strong className="bg-light p-2">Price per night {data.price} ,-</strong>
             <h5 className="pt-5" style={{ color: "#428DA8"}}>Check availability:</h5>
             <div>
               
             </div>
+            <div>
+              <Booking />
+            </div>
            
             </Col>
+           
+         
            
       </Row>
 
