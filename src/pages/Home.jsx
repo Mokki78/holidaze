@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import * as ButtonStyle from "../styled.components/Button.style";
 import { Icon } from "@iconify/react";
+import { SearchBar } from "../components/SearchBar";
 
 
 
@@ -42,7 +43,7 @@ export const Home = () => {
   const ShowVenues = () => {
     return (
       <>
-        <Container className="d-flex justify-content-center align-items-center">
+        <Container className="venues d-flex justify-content-center align-items-center">
           <Row>
             {venues.map((venue) => {
               return (
@@ -57,11 +58,13 @@ export const Home = () => {
                       
                         src={venue.media}
                         height="250px"
+                        width="100%"
                         alt={venue.title}
+                        style={{objectFit: "cover"}}
                       />
 
                       <div>
-                        <h5>
+                        <h5 className="venueTitle">
                          <strong>{venue.location.city + ", " + venue.location.country}{" "}</strong> 
                         </h5>
                         <p>NOK {venue.price} ,-</p>
@@ -83,6 +86,7 @@ export const Home = () => {
 
   return (
     <div className="container my-3 py-1">
+       <SearchBar />
       <div className="row">
         <div className="col-12 mb-5">
           

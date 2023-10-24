@@ -11,7 +11,7 @@ import { Login } from "../src/pages/Login";
 import { Register } from "../src/pages/Register";
 import { Logout } from "../src/pages/Logout";
 import { LoginAdmin } from "../src/pages/Admin_login";
-import { SearchBar } from "../src/components/SearchBar";
+
 
 
 function Header() {
@@ -19,7 +19,7 @@ function Header() {
     <>
     <div>
       <NavBar />
-      <SearchBar />
+     
     </div>
     </>
   )
