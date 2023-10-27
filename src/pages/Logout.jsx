@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 export function Logout() {
-   
-    const letsNavigate = useNavigate;
-    const [items, setItems] = useState([]);
-    const [accessToken, setAccessToken] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        localStorage.getItem(accessToken, "accessToken", items, "items")
-        localStorage.clear("items", JSON.stringify(items))
-     
-        localStorage.removeItem("accessToken", accessToken )
-    }, [items, accessToken]);
-    
-    if(localStorage === 0) {
-        new alert("You are now logged out")
-        letsNavigate("/")
-    
-    } 
+  useEffect(() => {
+    localStorage.clear("accessToken");
+    localStorage.clear("userDetails");
 
-    return null
-   
-    
-};
+    alert("You have been successfully logged out.");
 
+    navigate("/");
+  }, [navigate]);
 
+  return null;
+}
 
 export default Logout;

@@ -32,7 +32,7 @@ export function Profile() {
         <div>
           <h1>{name}</h1>
           <div>
-            <img src={avatar} width="200px" alt={`${name}'s Avatar`} />
+            <img src={avatar} height="150px" alt={`${name}'s Avatar`} />
           </div>
         </div>
       )}
