@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { Booking } from "../components/Booking";
+
+
+import { Reserve } from "../components/Reserve";
 
 export function SingleVenue() {
-
   const [data, setData] = useState([]);
-  const[loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
   let { id } = useParams();
 
+  console.log(userDetails);
 
   useEffect(() => {
     async function getVenues(url) {
@@ -22,16 +26,17 @@ export function SingleVenue() {
         const json = await response.json();
 
         setData(json);
-      } catch(error ) {
-      console.error("There has been an error fetching the requested venue details")
-      setIsError(true);
-    } finally {
-      setLoading(false);
-    }
+      } catch (error) {
+        console.error(
+          "There has been an error fetching the requested venue details"
+        );
+        setIsError(true);
+      } finally {
+        setLoading(false);
+      }
     }
 
     getVenues(`https://api.noroff.dev/api/v1/holidaze/venues/${id}`);
-  
   }, [id]);
 
   if (loading || !data.id) {
@@ -45,17 +50,26 @@ export function SingleVenue() {
     );
   }
 
+  const handleClick = () => {
+    if (userDetails) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
+
   if (isError) {
     return <div>Error</div>;
   }
 
-
-    return (
+  return (
     <>
-    <Container style={{ border: "0.5px solid #E3E3E3" }} className="mt-5 mb-5">
-      <Row>
-       
-        <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5">
+      <Container
+        style={{ border: "0.5px solid #E3E3E3" }}
+        className="mt-5 mb-5"
+      >
+        <Row>
+          <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5">
             <img
               src={data.media}
               className="img-fluid"
@@ -65,36 +79,30 @@ export function SingleVenue() {
             />
           </Col>
           <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
-          <h1>{data.name}</h1>
-        <p>{data.location.city + ", " + data.location.country}{" "}</p>
-     
-          
-          <p className="p-5 bg-light">{data.description}</p>
-            <div>
-            <p>Max guests: {data.maxGuests}</p>
-            <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
-            <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
-            <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
-            <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
-            </div>
-            <strong className="bg-light p-2">Price per night {data.price} ,-</strong>
-            <h5 className="pt-5" style={{ color: "#428DA8"}}>Check availability:</h5>
-            <div>
-              
-            </div>
-            <div>
-              <Booking />
-            </div>
-           
-            </Col>
-           
-         
-           
-      </Row>
+            <h1>{data.name}</h1>
+            <p>{data.location.city + ", " + data.location.country} </p>
 
-    </Container>
+            <p className="p-5 bg-light">{data.description}</p>
+            <div>
+              <p>Max guests: {data.maxGuests}</p>
+              <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
+              <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
+              <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
+              <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
+            </div>
+            <strong className="bg-light p-2">
+              Price per night {data.price} ,-
+            </strong>
+
+            <div>
+              <button onClick={handleClick}>Booking</button>
+            </div>
+          </Col>
+        </Row>
+        {openModal && <Reserve setOpen={setOpenModal} singleVenueId={id} />}
+      </Container>
     </>
-    );
-  }
-  
- export default SingleVenue; 
+  );
+}
+
+export default SingleVenue;
