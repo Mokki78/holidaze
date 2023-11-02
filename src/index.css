@@ -58,6 +58,10 @@ code {
   color: #428da8;
 }
 
+.bookingIcon {
+  color: #428da8;
+}
+
 .date {
   position: absolute;
   top: 50px;
@@ -97,4 +101,62 @@ code {
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
+}
+.booking {
+  position: absolute;
+  top: 100px;
+  color: grey;
+  border-radius: 5px;
+  padding: 300px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  margin-bottom: 200px;
+}
+
+.bookingItem {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+   margin: 0 auto;
+  gap: 30px;
+
+}
+
+.bookingCounter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bookingCounterButton {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #428da8;
+  cursor: pointer;
+  background-color: white;
+}
+
+.bookingCounterButton:disabled {
+  cursor: not-allowed;
+}
+
+.bookingItem {
+  background-color: white;
+}
+
+.rClose{
+  position: absolute;
+  top: 130px;
+  right: 200px;
+  z-index: 2;
+
+}
+
+.rButton {
+  position: absolute;
+  top: 800px;
+  right: 500px;
+  z-index: 2;
 }

@@ -12,21 +12,14 @@ import { Register } from "../src/pages/Register";
 import { Logout } from "../src/pages/Logout";
 import { LoginAdmin } from "../src/pages/Admin_login";
 
-function Header() {
-  return (
-    <>
-      <div>
-        <NavBar />
-      </div>
-    </>
-  );
-}
+
+
 
 function App() {
   return (
     <>
       <Container>
-      <Header />
+      <NavBar />
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/singlevenue/:id" element={<SingleVenue />} />

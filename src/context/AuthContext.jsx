@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 
- export const AuthContext = createContext();
+ export const AuthContext = createContext(null);
 
 const INITIAL_STATE = {
   userDetails: JSON.parse(localStorage.getItem("userDetails")) || null,

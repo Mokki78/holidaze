@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+
 import { useNavigate } from "react-router-dom";
 
 export function Profile() {
@@ -8,9 +9,11 @@ export function Profile() {
 
   const letsNavigate = useNavigate();
 
-  useEffect(() => {
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
+  useEffect(() => {
+
+    const userDetails = JSON.parse(localStorage.getItem("userDetails"))
+    
     if (userDetails) {
       const { name, avatar } = userDetails;
       setName(name);

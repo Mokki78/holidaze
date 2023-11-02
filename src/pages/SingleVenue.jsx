@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-
-
 import { Reserve } from "../components/Reserve";
+
 
 export function SingleVenue() {
   const [data, setData] = useState([]);
@@ -12,6 +11,7 @@ export function SingleVenue() {
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
+  const [ guests, setGuests ] = useState(1);
   let { id } = useParams();
 
   console.log(userDetails);
@@ -95,11 +95,14 @@ export function SingleVenue() {
             </strong>
 
             <div>
-              <button onClick={handleClick}>Booking</button>
+              <button onClick={handleClick}>Check availability</button>
             </div>
           </Col>
+         
+          
+         
         </Row>
-        {openModal && <Reserve setOpen={setOpenModal} singleVenueId={id} />}
+        {openModal && <Reserve setOpen={setOpenModal} venueId={id}  guests={guests} setGuests={setGuests}/>}
       </Container>
     </>
   );

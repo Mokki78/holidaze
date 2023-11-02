@@ -1,11 +1,11 @@
-import React from "react";
-
+import React, {  useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 
 export function NavBar() {
-  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const { state } = useContext( AuthContext);
+  const userDetails = state.userDetails;
   console.log("userDetails in NavBar: ", userDetails);
 
   return (
@@ -26,7 +26,7 @@ export function NavBar() {
                 img
                 src={userDetails.avatar}
                 height="50px"
-                alt={`${userDetails.name}'s Avatar`}
+               
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item href="/Profile">Profile</NavDropdown.Item>
