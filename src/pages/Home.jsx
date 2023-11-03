@@ -5,8 +5,6 @@ import * as ButtonStyle from "../styled.components/Button.style";
 import { Icon } from "@iconify/react";
 import { SearchBar } from "../components/SearchBar";
 
-
-
 export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [venues, setVenues] = useState([]);
@@ -47,35 +45,34 @@ export const Home = () => {
           <Row>
             {venues.map((venue) => {
               return (
-          
-                  <ButtonStyle.Button
-                    onClick={() => letsNavigate(`/singlevenue/${venue.id}`)}
-                    className="col-md-3 p-3"
-                    key={venue.id}
-                  >
-                    <div className="card h-100 text-center p-4">
-                      <img 
-                      
-                        src={venue.media}
-                        height="250px"
-                        width="100%"
-                        alt={venue.title}
-                        style={{objectFit: "cover"}}
-                      />
+                <ButtonStyle.Button
+                  onClick={() => letsNavigate(`/singlevenue/${venue.id}`)}
+                  className="col-md-3 p-3"
+                  key={venue.id}
+                >
+                  <div className="card h-100 text-center p-4">
+                    <img
+                      src={venue.media}
+                      height="250px"
+                      width="100%"
+                      alt={venue.title}
+                      style={{ objectFit: "cover" }}
+                    />
 
-                      <div>
-                        <h5 className="venueTitle">
-                         <strong>{venue.location.city + ", " + venue.location.country}{" "}</strong> 
-                        </h5>
-                        <p>NOK {venue.price} ,-</p>
-                        <p>
-                          {venue.rating && venue.rating}
-                          <Icon icon="prime:star" height="30px" />
-                        </p>
-                      </div>
+                    <div>
+                      <h5 className="venueTitle">
+                        <strong>
+                          {venue.location.city + ", " + venue.location.country}{" "}
+                        </strong>
+                      </h5>
+                      <p>NOK {venue.price} ,-</p>
+                      <p>
+                        {venue.rating && venue.rating}
+                        <Icon icon="prime:star" height="30px" />
+                      </p>
                     </div>
-                  </ButtonStyle.Button>
-       
+                  </div>
+                </ButtonStyle.Button>
               );
             })}
           </Row>
@@ -86,12 +83,9 @@ export const Home = () => {
 
   return (
     <div className="container my-3 py-1">
-       <SearchBar />
+      <SearchBar />
       <div className="row">
-        <div className="col-12 mb-5">
-          
-        
-        </div>
+        <div className="col-12 mb-5"></div>
       </div>
       <div className="row justify-content-center">
         {loading ? <Loader /> : <ShowVenues />}
