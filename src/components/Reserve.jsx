@@ -74,7 +74,7 @@ export const Reserve = ({ setOpen, venueId, option }) => {
     if (maxGuests === 0) {
       alert("Max guests information not available.");
     } else {
-      const guests = parseInt(maxGuests);
+     
       const startDate = selectedDateRange[0].startDate;
       const endDate = selectedDateRange[0].endDate;
       const bookingGuests = guests;

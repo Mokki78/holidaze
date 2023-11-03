@@ -1,4 +1,6 @@
 import React, { useState, useEffect} from "react";
+import { ProfileBookings } from "../components/ProfileBookings";
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -27,6 +29,7 @@ export function Profile() {
     }
   }, []);
 
+ 
   return (
     <div>
       {loading ? (
@@ -39,6 +42,10 @@ export function Profile() {
           </div>
         </div>
       )}
+      <div>
+        <ProfileBookings name={name}/>
+      
+      </div>
     </div>
   );
 }
