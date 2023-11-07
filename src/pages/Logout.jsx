@@ -5,13 +5,11 @@ export function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.clear("accessToken");
-    localStorage.clear("userDetails");
-
+    localStorage.clear("accessToken", "userDetails");
     alert("You have been successfully logged out.");
 
     navigate("/");
-  }, [navigate]);
+  }, []);
 
   return null;
 }

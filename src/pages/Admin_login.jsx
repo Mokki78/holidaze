@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 export function LoginAdmin() {
+  const { state} = useAuth();
+  const { userDetails } = state;
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   useEffect(() => {
     if (
@@ -32,6 +34,7 @@ export function LoginAdmin() {
     };
 
     const apiUrl = "https://api.noroff.dev/api/v1/holidaze/auth/login";
+    
 
     try {
       const response = await fetch(apiUrl, {
@@ -45,24 +48,32 @@ export function LoginAdmin() {
       if (response.ok) {
         const data = await response.json();
         setIsSubmitting(false);
-        
+      
         localStorage.setItem("accessToken", data.accessToken);
-
+      
+       
         const userDetails = {
           name: data.name,
           pass: data.password,
           avatar: data.avatar,
           venueManager: data.venueManager,
+          isAdmin: data.venueManager === true, 
         };
+   
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      
+       
         navigate("/admin");
       } else {
+        
+        alert("Please enter a valid admin details");
         setIsSubmitting(false);
         const errorData = await response.json();
         if (errorData.errors !== undefined) {
           setValidationErrors(errorData.errors);
         }
       }
+      
     } catch (error) {
       setIsSubmitting(false);
       console.error("An error occurred:");
@@ -127,6 +138,11 @@ export function LoginAdmin() {
                   >
                     Login
                   </button>
+                    <p className="text-center">
+                    Switch to customer: {" "}
+                    <Link to="/login">Login</Link>
+                    </p>
+
 
                   <p className="text-center">
                     Don't have account?{" "}

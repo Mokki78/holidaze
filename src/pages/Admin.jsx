@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth} from "../context/AuthContext";
+import { AdminCreate} from "../components/AdminCreate";
 
 export function Admin() {
+  const { state } = useAuth();
+  const { userDetails } = state;
   const [avatar, setAvatar] = useState("");
   const [loading, isLoading] = useState(false);
   const [name, setName] = useState("");
-  const [isVenueManager, setIsVenueManager] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  
+  
 
   const letsNavigate = useNavigate();
 
@@ -26,6 +32,11 @@ export function Admin() {
     }
   }, []);
 
+  const handleClick = () => { setOpenModal(true);
+  }
+
+
+
   return (
     <div>
       {loading ? (
@@ -38,6 +49,15 @@ export function Admin() {
           </div>
         </div>
       )}
+      <div>
+      <div>
+            <button onClick={handleClick}>
+            Create new venue
+            </button>
+            
+          </div>
+        {openModal && <AdminCreate  setOpen={setOpenModal}  />}
+      </div>
     </div>
   );
 }

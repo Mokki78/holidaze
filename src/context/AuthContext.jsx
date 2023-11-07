@@ -34,6 +34,14 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
+      case "SET_ADMIN_STATUS" :
+      return {
+        ...state, 
+        userDetails: {
+          ...state.userDetails,
+          isAdmin: action.isAdmin,
+        },
+      };
     default:
       return state;
   }
@@ -45,6 +53,8 @@ export const AuthContextProvider = ({ children }) => {
  useEffect(() => {
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if(userDetails) {
+      const isAdmin = userDetails.venueManager === true;
+      dispatch({ type: "SET_ADMIN_STATUS", isAdmin})
       dispatch({ type: "LOGIN_SUCCESS",payload: userDetails })
     }
 
