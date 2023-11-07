@@ -157,7 +157,7 @@ export function Register() {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="venueManager" className="form-label">
-                    Venue Manager
+                    Admin account
                   </label>
                   <input
                     type="checkbox" 
