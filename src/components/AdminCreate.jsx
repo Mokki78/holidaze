@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 export function AdminCreate() {
@@ -20,6 +20,7 @@ export function AdminCreate() {
   const [country, setCountry] = useState("");
   const [continent, setContinent ] = useState("");
   const [data, setData] = useState({});
+
  
 
   const [validationErrors, setValidationErrors] = useState({});
@@ -37,16 +38,21 @@ export function AdminCreate() {
         price: parseFloat(price),      
         maxGuests: parseInt(maxGuests), 
         rating: parseFloat(rating),
-        wifi: wifi,
-        parking: parking,
-        breakfast: breakfast,
-        pets: pets,
-        address: address,
-        city: city,
-        zip: zip,
-        country: country,
-        continent: continent,
+        meta: {
+          wifi: wifi,
+          parking: parking,
+          breakfast: breakfast,
+          pets: pets,
+        },
+        location: {
+          address: address,
+          city: city,
+          zip: zip,
+          country: country,
+          continent: continent,
+        },
       };
+    
 
       const apiUrl = "https://api.noroff.dev/api/v1/holidaze/venues";
 
@@ -67,7 +73,7 @@ export function AdminCreate() {
           setData(data);
          
         alert("You have successfully made a new venue")
-          
+         
           
         } else {
           setIsSubmitting(false);
@@ -82,27 +88,6 @@ export function AdminCreate() {
         console.error("An error occurred:", error);
       }
     };
-
-    useEffect(() => {
-      if (data.meta) {
-        // Handle the data.meta properties if needed
-        setWifi(data.meta.wifi);
-        setParking(data.meta.parking);
-        setBreakfast(data.meta.breakfast);
-        setPets(data.meta.pets);
-      }
-  
-      if (data.location) {
-        // Handle the data.location properties if needed
-        setAddress(data.location.address);
-        setCity(data.location.city);
-        setZip(data.location.zip);
-        setCountry(data.location.country);
-        setContinent(data.location.continent);
-        alert("You have successfully made a new venue");
-      }
-    }, [data]);
-  
 
 
   
@@ -400,6 +385,17 @@ export function AdminCreate() {
                       className="btn btn-primary btn-block"
                     >
                       Create venue
+                    </button>
+                  </div>
+                  <div className="d-grid gap-2">
+                    <button
+                    className="btn btn-primary btn-block"
+                    >
+                      Edit
+                    </button>
+                    <button>
+                      Delete
+                
                     </button>
                   </div>
                 </form>

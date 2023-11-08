@@ -4,25 +4,22 @@ import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 export function LoginAdmin() {
-  const { state} = useAuth();
-  const { userDetails } = state;
+  const { dispatch } = useAuth();
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-
   useEffect(() => {
-    if (
-      localStorage.getItem("accessToken") &&
-      localStorage.getItem("accessToken") != null
-    ) {
-      navigate("/admin_login");
+    if (localStorage.getItem("accessToken")) {
+      navigate("/profile");
     }
-    console.log(localStorage.getItem("accessToken"));
-  }, []);
+  }, [navigate]);
 
+
+ 
   const loginAction = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -57,12 +54,13 @@ export function LoginAdmin() {
           pass: data.password,
           avatar: data.avatar,
           venueManager: data.venueManager,
-          isAdmin: data.venueManager === true, 
+          venueManager: data.venueManager === true, 
         };
-   
+
+        dispatch ({ type: "LOGIN_SUCCESS", payload: userDetails });
+
+        localStorage.setItem("accessToken",  data.accessToken);
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
-      
-       
         navigate("/admin");
       } else {
         

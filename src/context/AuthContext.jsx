@@ -53,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
  useEffect(() => {
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if(userDetails) {
-      const isAdmin = userDetails.venueManager === true;
+      const isAdmin = userDetails.isAdmin || userDetails.venueManager === true;
       dispatch({ type: "SET_ADMIN_STATUS", isAdmin})
       dispatch({ type: "LOGIN_SUCCESS",payload: userDetails })
     }

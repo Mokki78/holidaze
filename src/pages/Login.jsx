@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from "react";
-
+import React, {  useEffect,  useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 export function Login() {
   const navigate = useNavigate();
+  const { dispatch } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (
-      localStorage.getItem("accessToken")  &&
-      localStorage.getItem("accessToken") != null
-    ) {
-      navigate("/login");
+    if (localStorage.getItem("accessToken")) {
+      navigate("/profile");
     }
-    console.log(localStorage.getItem("accessToken"));
-  }, []);
+  }, [navigate]);
+
 
   const loginAction = async (e) => {
     e.preventDefault();
@@ -43,12 +41,17 @@ export function Login() {
       if (response.ok) {
         const data = await response.json();
         setIsSubmitting(false);
-        localStorage.setItem("accessToken", data.accessToken);
+
+       
         const userDetails = {
           name: data.name,
           pass: data.password,
           avatar: data.avatar,
+          isAdmin: data.venueManager === false,
         };
+        dispatch ({ type: "LOGIN_SUCCESS", payload: userDetails });
+
+        localStorage.setItem("accessToken",  data.accessToken);
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
         navigate("/profile");
         console.log(userDetails)
