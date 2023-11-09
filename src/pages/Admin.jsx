@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth} from "../context/AuthContext";
 import { AdminCreate} from "../components/AdminCreate";
 
+import { AdminVenues} from "../components/AdminVenues";
+
 export function Admin() {
   const { state } = useAuth();
   const { userDetails } = state;
@@ -10,6 +12,7 @@ export function Admin() {
   const [loading, isLoading] = useState(false);
   const [name, setName] = useState("");
   const [openModal, setOpenModal] = useState(false);
+ 
   
   
 
@@ -56,6 +59,7 @@ export function Admin() {
             </button>
             
           </div>
+          <AdminVenues name={userDetails.name}/>
         {openModal && <AdminCreate  setOpen={setOpenModal}  />}
       </div>
     </div>
