@@ -14,7 +14,7 @@ export function LoginAdmin() {
   
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
-      navigate("/profile");
+      navigate("/admin");
     }
   }, [navigate]);
 

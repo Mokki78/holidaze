@@ -25,7 +25,7 @@ export function NavBar() {
               src={userDetails.avatar}
               height="50px"
             >
-              {userDetails.isAdmin ? (
+              {userDetails.venueManager === true ? (
                 <NavDropdown.Item href="/admin">Admin page</NavDropdown.Item>
               ) : (
                 <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>

@@ -151,10 +151,10 @@ export function AdminCreate() {
                       Images of the property:
                     </label>
                     <input
-                      type="images"
+                      type="url"
                       className="form-control"
-                      id="images"
-                      name="images"
+                      id="url"
+                      name="url"
                       value={media}
                       onChange={(e) => setMedia(e.target.value)}
                     />
@@ -387,17 +387,7 @@ export function AdminCreate() {
                       Create venue
                     </button>
                   </div>
-                  <div className="d-grid gap-2">
-                    <button
-                    className="btn btn-primary btn-block"
-                    >
-                      Edit
-                    </button>
-                    <button>
-                      Delete
-                
-                    </button>
-                  </div>
+             
                 </form>
               </div>
             </div>
