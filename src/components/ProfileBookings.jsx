@@ -42,7 +42,7 @@ export function ProfileBookings({ name }) {
 
   return (
     <div>
-      <h2>Your upcoming venues:</h2>
+      <h2>Your bookings:</h2>
       <ul>
         {bookings.map((booking) => (
           <li key={booking.id}>

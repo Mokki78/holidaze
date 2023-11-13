@@ -35,22 +35,6 @@ export const AdminVenues = ({ name }) => {
 
     fetchVenues(name);
   }, [name]); // Include 'name' in the dependency array
-
-const handleClick = (venueId) => {
-
-  const ifDelete = window.confirm("Are you really sure you want to delete this?")
-
-  if(ifDelete) {
-    const requestOptions = {
-      method: "DELETE",
-    };
-
-    fetch (`https://api.noroff.dev/api/v1/holidaze/venues/`+ venueId, requestOptions).then((response) => {
-      return response.json();
-    }).then(()  => {
-  
-    });
-
    
 
   
@@ -88,7 +72,7 @@ const handleClick = (venueId) => {
                     <p>Continent: {venue.location.continent}</p>
                   </div>
                   <div>
-            <button onClick={() => handleClick(venueId)}>Edit</button>
+            <button >Edit</button>
             <button>Delete</button>
           </div>
                 </div>
@@ -112,7 +96,5 @@ const handleClick = (venueId) => {
     </div>
   );
 };
-}
-}
 
 export default AdminVenues;
