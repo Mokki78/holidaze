@@ -1,12 +1,13 @@
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Booking } from "../components/Booking";
+import { Booking} from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
 import { Venues } from "../controllers/Venues";
+import { BookingCalender } from "./BookingCalender";
 
 
-export const Reserve = ({ setOpen, venueId, option }) => {
+export const Reserve = ({ setOpen, venueId }) => {
   const { dates } = useContext(SearchContext);
   const [ guests, setGuests ] = useState(1);
 
@@ -79,11 +80,11 @@ export const Reserve = ({ setOpen, venueId, option }) => {
       const endDate = selectedDateRange[0].endDate;
       const bookingGuests = guests;
 
-      if (bookingGuests <= guests) {
+      if (bookingGuests <= maxGuests) {
         const bookingData = {
           dateFrom: startDate.toISOString(),
           dateTo: endDate.toISOString(),
-          guests: bookingGuests,
+          guests: guests,
           venueId: venueId,
         } 
          console.log(bookingData);
@@ -95,7 +96,7 @@ export const Reserve = ({ setOpen, venueId, option }) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(bookingData),
-        })
+        }) 
           .then((response) => {
             if (response.ok) {
               alert("Booking successful!");
@@ -118,6 +119,7 @@ export const Reserve = ({ setOpen, venueId, option }) => {
           onDateRangeChange={handleDateRangeChange}
           guests={guests} setGuests={setGuests}
         />
+        <BookingCalender />
         <Venues />
         <div>
           <FontAwesomeIcon
@@ -125,9 +127,13 @@ export const Reserve = ({ setOpen, venueId, option }) => {
             className="rClose"
             onClick={() => setOpen(false)}
           />
+            {guests > maxGuests ? (
+          <p  style={{ color: "red"}}>The max number of guests for this property is {maxGuests} </p>
+        ) : (
           <button className="rButton" onClick={handleClick}>
             Book now
           </button>
+        )}
         </div>
       </div>
     </>
