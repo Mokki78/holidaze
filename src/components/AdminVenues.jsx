@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { AdminDelete } from "../components/AdminDelete";
+import { AdminUpdate}  from "../components/AdminUpdate";
 
 export const AdminVenues = ({ name }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [venue, setVenue] = useState({})
 
   useEffect(() => {
     const fetchVenues = async () => {
@@ -34,7 +36,7 @@ export const AdminVenues = ({ name }) => {
     };
 
     fetchVenues(name);
-  }, [name]); // Include 'name' in the dependency array
+  }, [name]); 
    
 
   
@@ -72,7 +74,7 @@ export const AdminVenues = ({ name }) => {
                     <p>Continent: {venue.location.continent}</p>
                   </div>
                   <div>
-            <button >Edit</button>
+            <button onClick={() => setVenue(venue)}>Edit</button>
             <button>Delete</button>
           </div>
                 </div>
