@@ -2,6 +2,8 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { SearchBar } from "../components/SearchBar";
+import {SearchData} from "../data/SearchData";
 
 export function NavBar() {
   const { state } = useAuth();
@@ -17,6 +19,8 @@ export function NavBar() {
           <Link className="logo me-auto" to="/">
             Holidaze
           </Link>
+          <SearchBar  placeholder={"Where is your next holiday?"} data={SearchData}/>
+          <SearchData />
           {userDetails ? (
             <NavDropdown
               title={userDetails.name}
