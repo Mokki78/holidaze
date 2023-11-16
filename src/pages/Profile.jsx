@@ -29,9 +29,9 @@ export function Profile() {
   }, []);
 
   const handleClick = () => {
-    // Check if there is a new avatar URL before triggering the update
+    
     if (newAvatarUrl) {
-      // Update the avatar only if a new URL is provided
+  
       UseAvatarUpdate(name);
     } else {
       console.log("No new avatar URL provided");

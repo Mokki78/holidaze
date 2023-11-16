@@ -6,7 +6,8 @@ export const BookingCalender = ({ venueId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
+
+ useEffect(() => {
     const fetchDates = async () => {
       try {
         const response = await fetch(
@@ -19,7 +20,9 @@ export const BookingCalender = ({ venueId }) => {
           }
         );
 
-        if (response.ok) {
+
+       if (response.ok ) {
+
           const data = await response.json();
           setBookedDates(data.bookings);
 
@@ -39,6 +42,7 @@ export const BookingCalender = ({ venueId }) => {
   }, [venueId]);
 
   // Create an array of disabled date ranges
+
   const disabledDateRanges = bookedDates
     ? bookedDates
         .filter((bookings) => {
