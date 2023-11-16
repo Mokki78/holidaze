@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import * as ButtonStyle from "../styled.components/Button.style";
 import { Icon } from "@iconify/react";
-import { SearchBar } from "../components/SearchBar";
+
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ export const Home = () => {
 
   return (
     <div className="container my-3 py-1">
-      <SearchBar />
+    
       <div className="row">
         <div className="col-12 mb-5"></div>
       </div>
