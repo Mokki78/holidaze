@@ -12,6 +12,7 @@ import { Login } from "../src/pages/Login";
 import { Register } from "../src/pages/Register";
 import { Logout } from "../src/pages/Logout";
 import { LoginAdmin } from "../src/pages/Admin_login";
+import {AdminVenues} from "../src/components/AdminVenues"
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/admin_login" element={<LoginAdmin />} />
+          <Route path="/adminvenues/:id" component={AdminVenues} />
         </Routes>
      
         <Footer />
