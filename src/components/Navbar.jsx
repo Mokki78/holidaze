@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Search } from "../components/Saerch";
+import { Search } from "../components/Search";
 
 export function NavBar() {
   const { state } = useAuth();

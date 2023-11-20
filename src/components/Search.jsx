@@ -74,7 +74,7 @@ export const Search = () => {
                   options={searchOptions}
                   selected={selectedOption}
                   onChange={handleSelection}
-                  placeholder="Search products..."
+                  placeholder="Search for venue"
                   className="me-2"
                   icon="prime:search"
                   height="30px"
