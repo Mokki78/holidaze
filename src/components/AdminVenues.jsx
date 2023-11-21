@@ -36,12 +36,15 @@ export const AdminVenues = ({ name }) => {
       ? event.target.checked
       : event.target.value;
   
-    // Convert price to a number
     if (fieldName === "price") {
       fieldValue = parseFloat(fieldValue);
     }
 
     if (fieldName === "maxGuests") {
+      fieldValue = parseFloat(fieldValue);
+    }
+
+    if (fieldName === "rating") {
       fieldValue = parseFloat(fieldValue);
     }
   

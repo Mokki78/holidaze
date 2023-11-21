@@ -119,7 +119,7 @@ export const Reserve = ({ setOpen, venueId }) => {
           onDateRangeChange={handleDateRangeChange}
           guests={guests} setGuests={setGuests}
         />
-        <BookingCalender />
+        <BookingCalender venueId={venueId}/>
         <Venues />
         <div>
           <FontAwesomeIcon

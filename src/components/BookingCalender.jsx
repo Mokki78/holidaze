@@ -11,7 +11,7 @@ export const BookingCalender = ({ venueId }) => {
     const fetchDates = async () => {
       try {
         const response = await fetch(
-          `https://api.noroff.dev/api/v1/holidaze/bookings/?_venue=true&venueId`,
+          `https://api.noroff.dev/api/v1/holidaze/venues/${venueId}?_bookings=true`,
           {
             method: "GET",
             headers: {
@@ -45,10 +45,7 @@ export const BookingCalender = ({ venueId }) => {
 
   const disabledDateRanges = bookedDates
     ? bookedDates
-        .filter((bookings) => {
-          return bookings.venue.id === venueId;
-        })
-        .map((bookings) => ({
+       .map((bookings) => ({
           startDate: new Date(bookings.dateFrom),
           endDate: new Date(bookings.dateTo),
         }))
@@ -56,7 +53,7 @@ export const BookingCalender = ({ venueId }) => {
 
   console.log("My disabled ranges:", disabledDateRanges);
 
-  return <DateRange disabledDateIntervals={disabledDateRanges} />;
+  return ;
 };
 
 export default BookingCalender;

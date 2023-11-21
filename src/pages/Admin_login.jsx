@@ -11,15 +11,13 @@ export function LoginAdmin() {
   const [password, setPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       navigate("/admin");
     }
   }, [navigate]);
 
-
- 
   const loginAction = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -27,11 +25,9 @@ export function LoginAdmin() {
     const loginValues = {
       email: email,
       password: password,
-      
     };
 
     const apiUrl = "https://api.noroff.dev/api/v1/holidaze/auth/login";
-    
 
     try {
       const response = await fetch(apiUrl, {
@@ -45,25 +41,23 @@ export function LoginAdmin() {
       if (response.ok) {
         const data = await response.json();
         setIsSubmitting(false);
-      
+
         localStorage.setItem("accessToken", data.accessToken);
-      
-       
+
         const userDetails = {
           name: data.name,
           pass: data.password,
           avatar: data.avatar,
-          venueManager: data.venueManager,
-          venueManager: data.venueManager === true, 
+
+          venueManager: data.venueManager === true,
         };
 
-        dispatch ({ type: "LOGIN_SUCCESS", payload: userDetails });
+        dispatch({ type: "LOGIN_SUCCESS", payload: userDetails });
 
-        localStorage.setItem("accessToken",  data.accessToken);
+        localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
         navigate("/admin");
       } else {
-        
         alert("Please enter a valid admin details");
         setIsSubmitting(false);
         const errorData = await response.json();
@@ -71,7 +65,6 @@ export function LoginAdmin() {
           setValidationErrors(errorData.errors);
         }
       }
-      
     } catch (error) {
       setIsSubmitting(false);
       console.error("An error occurred:");
@@ -136,11 +129,9 @@ export function LoginAdmin() {
                   >
                     Login
                   </button>
-                    <p className="text-center">
-                    Switch to customer: {" "}
-                    <Link to="/login">Login</Link>
-                    </p>
-
+                  <p className="text-center">
+                    Switch to customer: <Link to="/login">Login</Link>
+                  </p>
 
                   <p className="text-center">
                     Don't have account?{" "}
