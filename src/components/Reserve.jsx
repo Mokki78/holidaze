@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Booking} from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
-import { Venues } from "../controllers/Venues";
 import { BookingCalender } from "./BookingCalender";
 
 
@@ -22,6 +21,8 @@ export const Reserve = ({ setOpen, venueId }) => {
       key: "selection",
     },
   ]);
+ const [disabledDateRanges, setDisabledDateRanges] = useState([]);
+  
 
   async function fetchMaxGuests(venueId) {
     try {
@@ -66,6 +67,11 @@ export const Reserve = ({ setOpen, venueId }) => {
   }, [venueId]);
   console.log("My venue id: ", venueId);
   console.log("MyMaxGuests:", maxGuests);
+
+  const onDisabledDateRangesChange = (disabledRanges) => {
+    // Update the disabled date ranges
+    setDisabledDateRanges(disabledRanges);
+  };
 
   const handleDateRangeChange = (dateRange) => {
     setSelectedDateRange([dateRange.selection]);
@@ -118,10 +124,11 @@ export const Reserve = ({ setOpen, venueId }) => {
           selectedDateRange={selectedDateRange}
           onDateRangeChange={handleDateRangeChange}
           guests={guests} setGuests={setGuests}
+          venueId={venueId}
+          disabledDateRanges={disabledDateRanges}
         />
-        <BookingCalender venueId={venueId}/>
-        <Venues />
-        <div>
+        <BookingCalender venueId={venueId} onDisableDateRangesChange={onDisabledDateRangesChange}/>
+       <div>
           <FontAwesomeIcon
             icon={faCircleXmark}
             className="rClose"

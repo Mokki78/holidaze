@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+
 
 export function ProfileBookings({ name }) {
   const [bookings, setBookings] = useState([]);
@@ -40,8 +42,10 @@ export function ProfileBookings({ name }) {
     );
   }
 
+
+
   return (
-    <div>
+    <Container className="venues d-flex justify-content-center align-items-center">
       <h2>Your bookings:</h2>
       <ul>
         {bookings.map((booking) => (
@@ -50,14 +54,15 @@ export function ProfileBookings({ name }) {
               <h5>{booking.venue.name}</h5>
               <p>{booking.venue.description}</p>
               <p>Price: {booking.venue.price}</p>
-              <img src={booking.venue.media[0]} alt={booking.venue.name} height={"200px"}/>
+              <img src={booking.venue.media[0]} alt={booking.venue.name} width={"200px"}/>
               <p>
-                {booking.dateFrom} to {booking.dateTo}
+               Booking dates:  {new Date(booking.dateFrom).toLocaleDateString()} to{" "}
+                {new Date(booking.dateTo).toLocaleDateString()}
               </p>
             </div>
           </li>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 }

@@ -13,7 +13,7 @@ export const Booking = ({
   onDateRangeChange,
   guests,
   setGuests,
-  disabledDateRanges,
+ 
 
 }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -62,9 +62,9 @@ export const Booking = ({
         <DateRange
           editableDateInputs={true}
           onChange={onDateRangeChange}
-          moveRngeOnFirstSelection={false}
+          moveRangeOnFirstSelection={true}
           ranges={selectedDateRange}
-          disabledDates={disabledDateRanges}
+         
           className="BookingDate"
         />
       </div>

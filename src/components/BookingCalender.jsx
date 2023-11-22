@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { DateRange } from "react-date-range";
+import { useState, useEffect, useMemo } from "react";
+import { Booking} from "../components/Booking";
 
 export const BookingCalender = ({ venueId }) => {
   const [bookedDates, setBookedDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-
- useEffect(() => {
+  useEffect(() => {
     const fetchDates = async () => {
       try {
         const response = await fetch(
@@ -20,12 +19,9 @@ export const BookingCalender = ({ venueId }) => {
           }
         );
 
-
-       if (response.ok ) {
-
+        if (response.ok) {
           const data = await response.json();
           setBookedDates(data.bookings);
-
           console.log("Bookings:", data);
         } else {
           console.error("Error fetching bookings");
@@ -39,21 +35,22 @@ export const BookingCalender = ({ venueId }) => {
     };
 
     fetchDates();
-  }, [venueId]);
+  }, [venueId, setBookedDates]);
 
   // Create an array of disabled date ranges
-
-  const disabledDateRanges = bookedDates
-    ? bookedDates
-       .map((bookings) => ({
-          startDate: new Date(bookings.dateFrom),
-          endDate: new Date(bookings.dateTo),
+  const disabledDateRanges = useMemo(() => {
+    return bookedDates
+      ? bookedDates.map((booking) => ({
+          startDate: new Date(booking.dateFrom),
+          endDate: new Date(booking.dateTo),
         }))
-    : [];
+      : [];
+  }, [bookedDates]);
 
   console.log("My disabled ranges:", disabledDateRanges);
 
-  return ;
+  return null;
 };
+
 
 export default BookingCalender;

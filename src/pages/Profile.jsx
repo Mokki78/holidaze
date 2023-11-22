@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ProfileBookings } from "../components/ProfileBookings";
 import { UseAvatarUpdate } from "../components/AvatarUpdate";
 import { useNavigate } from "react-router-dom";
+import { Container, Row, Col} from "react-bootstrap";
+
 
 export function Profile() {
   const [avatar, setAvatar] = useState("");
@@ -47,7 +49,7 @@ export function Profile() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <Container className="venues d-flex justify-content-center align-items-center">
           <h1>{name}</h1>
           <div>
             <img src={avatar} height="150px" alt={`${name}'s Avatar`} />
@@ -66,7 +68,7 @@ export function Profile() {
               </button>
             </form>
           </div>
-        </div>
+        </Container>
       )}
       <div>
         <ProfileBookings name={name} />
