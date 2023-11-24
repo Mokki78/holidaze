@@ -1,28 +1,31 @@
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Booking} from "../components/Booking";
+import { Booking } from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
 import { BookingCalender } from "./BookingCalender";
 
-
-export const Reserve = ({ setOpen, venueId }) => {
+export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
   const { dates } = useContext(SearchContext);
-  const [ guests, setGuests ] = useState(1);
+  const [guests, setGuests] = useState(1);
 
   const token = localStorage.getItem("accessToken");
   console.log(token);
 
+  const onDisabledDateRangesChange = (ranges) => {
+    // Do something with the disabled date ranges, if needed
+    console.log("Disabled Date Ranges changed:", ranges);
+  };
+
+
   const [maxGuests, setMaxGuests] = useState(0);
   const [selectedDateRange, setSelectedDateRange] = useState([
     {
-      dateFrom: new Date(),
-      dateTo: new Date(),
+      startDate: new Date(),
+      endDate: new Date(),
       key: "selection",
     },
   ]);
- const [disabledDateRanges, setDisabledDateRanges] = useState([]);
-  
 
   async function fetchMaxGuests(venueId) {
     try {
@@ -57,7 +60,6 @@ export const Reserve = ({ setOpen, venueId }) => {
   useEffect(() => {
     fetchMaxGuests(venueId)
       .then((maxGuests) => {
-       
         setMaxGuests(maxGuests);
         console.log("My Max Guests:", maxGuests);
       })
@@ -68,11 +70,6 @@ export const Reserve = ({ setOpen, venueId }) => {
   console.log("My venue id: ", venueId);
   console.log("MyMaxGuests:", maxGuests);
 
-  const onDisabledDateRangesChange = (disabledRanges) => {
-    // Update the disabled date ranges
-    setDisabledDateRanges(disabledRanges);
-  };
-
   const handleDateRangeChange = (dateRange) => {
     setSelectedDateRange([dateRange.selection]);
   };
@@ -81,7 +78,6 @@ export const Reserve = ({ setOpen, venueId }) => {
     if (maxGuests === 0) {
       alert("Max guests information not available.");
     } else {
-     
       const startDate = selectedDateRange[0].startDate;
       const endDate = selectedDateRange[0].endDate;
       const bookingGuests = guests;
@@ -92,8 +88,8 @@ export const Reserve = ({ setOpen, venueId }) => {
           dateTo: endDate.toISOString(),
           guests: guests,
           venueId: venueId,
-        } 
-         console.log(bookingData);
+        };
+        console.log(bookingData);
 
         fetch("https://api.noroff.dev/api/v1/holidaze/bookings", {
           method: "POST",
@@ -102,7 +98,7 @@ export const Reserve = ({ setOpen, venueId }) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(bookingData),
-        }) 
+        })
           .then((response) => {
             if (response.ok) {
               alert("Booking successful!");
@@ -123,24 +119,32 @@ export const Reserve = ({ setOpen, venueId }) => {
         <Booking
           selectedDateRange={selectedDateRange}
           onDateRangeChange={handleDateRangeChange}
-          guests={guests} setGuests={setGuests}
+          guests={guests}
+          setGuests={setGuests}
           venueId={venueId}
-          disabledDateRanges={disabledDateRanges}
+          disabledDate={disabledDateRanges}
         />
-        <BookingCalender venueId={venueId} onDisableDateRangesChange={onDisabledDateRangesChange}/>
-       <div>
+    <BookingCalender
+  venueId={venueId}
+  onDisabledDateRangesChange={onDisabledDateRangesChange}
+  onDateRangeChange={handleDateRangeChange}
+/>
+
+        <div>
           <FontAwesomeIcon
             icon={faCircleXmark}
             className="rClose"
             onClick={() => setOpen(false)}
           />
-            {guests > maxGuests ? (
-          <p  style={{ color: "red"}}>The max number of guests for this property is {maxGuests} </p>
-        ) : (
-          <button className="rButton" onClick={handleClick}>
-            Book now
-          </button>
-        )}
+          {guests > maxGuests ? (
+            <p style={{ color: "red" }}>
+              The max number of guests for this property is {maxGuests}{" "}
+            </p>
+          ) : (
+            <button className="rButton" onClick={handleClick}>
+              Book now
+            </button>
+          )}
         </div>
       </div>
     </>

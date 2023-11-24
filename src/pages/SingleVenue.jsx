@@ -4,7 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Reserve } from "../components/Reserve";
 
 
-export function SingleVenue() {
+
+export function SingleVenue( disabledDateRanges) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -102,7 +103,7 @@ export function SingleVenue() {
           
          
         </Row>
-        {openModal && <Reserve setOpen={setOpenModal} venueId={id}  guests={guests} setGuests={setGuests}/>}
+        {openModal && <Reserve setOpen={setOpenModal} venueId={id}  guests={guests} setGuests={setGuests} disabledDateRanges={disabledDateRanges}/>}
       </Container>
     </>
   );
