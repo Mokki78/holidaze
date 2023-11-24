@@ -8,12 +8,13 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
+
 export const Booking = ({
   selectedDateRange,
   onDateRangeChange,
   guests,
   setGuests,
- 
+  disabledDateRanges
 
 }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -47,6 +48,11 @@ export const Booking = ({
     }
   };
 
+  const processedDisabledDates = Array.isArray(disabledDateRanges)
+  ? disabledDateRanges
+  : [];
+
+
   return (
     <Container className="booking">
       <div className="bookingItem">
@@ -64,6 +70,7 @@ export const Booking = ({
           onChange={onDateRangeChange}
           moveRangeOnFirstSelection={true}
           ranges={selectedDateRange}
+        
          
           className="BookingDate"
         />
