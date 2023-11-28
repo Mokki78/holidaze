@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Layout from "../components/Layout";
 
-export function AdminCreate() {
-  const navigate = useNavigate();
+export function AdminCreate({ setOpenModal}) {
+
+ 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
@@ -18,90 +21,91 @@ export function AdminCreate() {
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
-  const [continent, setContinent ] = useState("");
+  const [continent, setContinent] = useState("");
   const [data, setData] = useState({});
 
- 
 
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  
-    const createVenueAction = async (e) => {
-      e.preventDefault();
-      setIsSubmitting(true);
+  const createVenueAction = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-      const payload = {
-        name: name,
-        description: description,
-        media: media,
-        price: parseFloat(price),      
-        maxGuests: parseInt(maxGuests), 
-        rating: parseFloat(rating),
-        meta: {
-          wifi: wifi,
-          parking: parking,
-          breakfast: breakfast,
-          pets: pets,
-        },
-        location: {
-          address: address,
-          city: city,
-          zip: zip,
-          country: country,
-          continent: continent,
-        },
-      };
-    
-
-      const apiUrl = "https://api.noroff.dev/api/v1/holidaze/venues";
-
-
-      try {
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(payload),
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setIsSubmitting(false);
-          setData(data);
-         
-        alert("You have successfully made a new venue")
-         
-          
-        } else {
-          setIsSubmitting(false);
-          
-          const errorData = await response.json();
-          if (errorData.errors !== undefined) {
-            setValidationErrors(errorData.errors);
-          }
-        }
-      } catch (error) {
-        setIsSubmitting(false);
-        console.error("An error occurred:", error);
-      }
+    const payload = {
+      name: name,
+      description: description,
+      media: media,
+      price: parseFloat(price),
+      maxGuests: parseInt(maxGuests),
+      rating: parseFloat(rating),
+      meta: {
+        wifi: wifi,
+        parking: parking,
+        breakfast: breakfast,
+        pets: pets,
+      },
+      location: {
+        address: address,
+        city: city,
+        zip: zip,
+        country: country,
+        continent: continent,
+      },
     };
 
+    const apiUrl = "https://api.noroff.dev/api/v1/holidaze/venues";
 
-  
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsSubmitting(false);
+        setData(data);
+
+        alert("You have successfully made a new venue");
+      } else {
+        setIsSubmitting(false);
+
+        const errorData = await response.json();
+        if (errorData.errors !== undefined) {
+          setValidationErrors(errorData.errors);
+        }
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error("An error occurred:", error);
+    }
+  };
+
+
+
 
   return (
     <>
       <Layout>
         <div className="row justify-content-md-center mt-5">
-        
           <div className="col-4">
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title mb-4">Create Venue</h5>
                 <form onSubmit={(e) => createVenueAction(e)}>
+                <FontAwesomeIcon
+  icon={faCircleXmark}
+  className="rClose"
+  onClick={(e) => {
+    e.preventDefault(); // Prevent form submission
+    setOpenModal(false);
+  }}
+/>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">
                       Title:
@@ -382,12 +386,12 @@ export function AdminCreate() {
                     <button
                       disabled={isSubmitting}
                       type="submit"
-                      className="btn btn-primary btn-block"
+                      className="mainButton"
                     >
-                      Create venue
+                      Create
                     </button>
+                   <button type="button" className="mainButton" onClick={() => setOpenModal(false)}>Cancel</button>
                   </div>
-             
                 </form>
               </div>
             </div>

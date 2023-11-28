@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth} from "../context/AuthContext";
-import { AdminCreate} from "../components/AdminCreate";
-
-import { AdminVenues} from "../components/AdminVenues";
+import { useAuth } from "../context/AuthContext";
+import { AdminCreate } from "../components/AdminCreate";
+import { Loader } from "../components/Spinner";
+import { AdminVenues } from "../components/AdminVenues";
+import {Container, Row, Col} from "react-bootstrap";
 
 export function Admin() {
   const { state } = useAuth();
@@ -12,11 +13,8 @@ export function Admin() {
   const [loading, isLoading] = useState(false);
   const [name, setName] = useState("");
   const [openModal, setOpenModal] = useState(false);
- 
-  
-  
 
-  const letsNavigate = useNavigate();
+  let letsNavigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userDetails"));
@@ -25,44 +23,39 @@ export function Admin() {
       const { name, avatar } = user;
       setName(name);
       setAvatar(avatar);
-      
+
       isLoading(false);
     } else {
       letsNavigate("/admin_login");
-      alert("Must be a valid Admin account")
+      alert("Must be a valid Admin account");
 
       console.error("Error: userDetails not found or invalid");
     }
   }, []);
 
-  const handleClick = () => { setOpenModal(true);
-  }
-
-
+  const handleClick = () => {
+    setOpenModal(true);
+  };
 
   return (
-    <div>
+    <Container className="d-flex flex-column">
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
-        <div>
-          <h1>{name}</h1>
-          <div>
-            <img src={avatar} width="200px" alt={`${name}'s Avatar`} />
-          </div>
+        <div className="d-flex flex-row justify-content-center align-items-center ">
+          <h1 className="title">Admin Dashboard</h1>
         </div>
       )}
       <div>
-      <div>
-            <button onClick={handleClick}>
-            Create new venue
-            </button>
-            
-          </div>
-          <AdminVenues name={userDetails.name}/>
-        {openModal && <AdminCreate  setOpen={setOpenModal}  />}
+        <div>
+          <button className="createButton" onClick={handleClick}>
+            Create
+          </button>
+        </div>
+        <AdminVenues name={userDetails.name} />
+        {openModal && <AdminCreate setOpenModal={setOpenModal} />}
       </div>
-    </div>
+    </Container>
   );
 }
 

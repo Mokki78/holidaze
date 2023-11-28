@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { Reserve } from "../components/Reserve";
+import { Loader } from "../components/Spinner"
 
 
 
@@ -43,10 +44,8 @@ export function SingleVenue( disabledDateRanges) {
   if (loading || !data.id) {
     return (
       <>
-        <div className="d-flex justify-content-center align-items-center">
-          Loading...
-        </div>
-        ;
+        <Loader />
+        
       </>
     );
   }
@@ -65,12 +64,17 @@ export function SingleVenue( disabledDateRanges) {
 
   return (
     <>
+      {loading ? (
+        <Loader />
+      ) : (
       <Container
         style={{ border: "0.5px solid #E3E3E3" }}
         className="mt-5 mb-5"
       >
         <Row>
-          <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5">
+          
+       
+          <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 mt-5 mx-5">
             <img
               src={data.media}
               className="img-fluid"
@@ -80,23 +84,26 @@ export function SingleVenue( disabledDateRanges) {
             />
           </Col>
           <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
-            <h1>{data.name}</h1>
+            <h1 className="title">{data.name}</h1>
             <p>{data.location.city + ", " + data.location.country} </p>
 
             <p className="p-5 bg-light">{data.description}</p>
-            <div>
+            <div className="col-6">
               <p>Max guests: {data.maxGuests}</p>
               <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
               <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
+              </div>
+              <div className="col-6">
               <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
               <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
-            </div>
-            <strong className="bg-light p-2">
-              Price per night {data.price} ,-
+          
+            <strong className="bg-light p-2 mb-3 m-2">
+              Price per night {data.price},-
             </strong>
+            </div>
 
             <div>
-              <button onClick={handleClick}>Check availability</button>
+              <button className="mainButton"onClick={handleClick}>Check availability</button>
             </div>
           </Col>
          
@@ -105,6 +112,7 @@ export function SingleVenue( disabledDateRanges) {
         </Row>
         {openModal && <Reserve setOpen={setOpenModal} venueId={id}  guests={guests} setGuests={setGuests} disabledDateRanges={disabledDateRanges}/>}
       </Container>
+      )}
     </>
   );
 }

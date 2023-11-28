@@ -19,13 +19,12 @@ export function NavBar() {
             Holidaze
           </Link>
           <Search />
+          <img src={userDetails.avatar} className="profileImg" alt={`${userDetails.name}'s Avatar`}/>
           {userDetails ? (
             <NavDropdown
               title={userDetails.name}
               id="basic-nav-dropdown"
-              img
-              src={userDetails.avatar}
-              height="50px"
+             
             >
               {userDetails.venueManager === true ? (
                 <NavDropdown.Item href="/admin">Admin page</NavDropdown.Item>

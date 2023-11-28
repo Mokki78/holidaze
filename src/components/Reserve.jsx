@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Booking } from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
-import { BookingCalender } from "./BookingCalender";
+import { Container} from "react-bootstrap";
 
 export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
   const { dates } = useContext(SearchContext);
@@ -16,7 +16,6 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
     // Do something with the disabled date ranges, if needed
     console.log("Disabled Date Ranges changed:", ranges);
   };
-
 
   const [maxGuests, setMaxGuests] = useState(0);
   const [selectedDateRange, setSelectedDateRange] = useState([
@@ -115,20 +114,20 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
 
   return (
     <>
-      <div className="reserve">
+      <Container className="reserve">
         <Booking
           selectedDateRange={selectedDateRange}
           onDateRangeChange={handleDateRangeChange}
           guests={guests}
           setGuests={setGuests}
           venueId={venueId}
-          disabledDate={disabledDateRanges}
+          disabledDateRanges={disabledDateRanges}
+          onDisabledDateRangesChange={onDisabledDateRangesChange}
         />
-    <BookingCalender
-  venueId={venueId}
-  onDisabledDateRangesChange={onDisabledDateRangesChange}
-  onDateRangeChange={handleDateRangeChange}
-/>
+          <button className="mainButton" onClick={handleClick}>
+              Book now
+            </button>
+          
 
         <div>
           <FontAwesomeIcon
@@ -136,17 +135,11 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
             className="rClose"
             onClick={() => setOpen(false)}
           />
-          {guests > maxGuests ? (
-            <p style={{ color: "red" }}>
-              The max number of guests for this property is {maxGuests}{" "}
-            </p>
-          ) : (
-            <button className="rButton" onClick={handleClick}>
-              Book now
-            </button>
-          )}
+        
+           
+          
         </div>
-      </div>
+      </Container>
     </>
   );
 };

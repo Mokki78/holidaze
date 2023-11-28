@@ -99,9 +99,13 @@ export const Booking = ({
               >
                 +
               </button>
+              
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        
       </div>
     </Container>
   );

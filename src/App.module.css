@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.mainButton {
+  background-color:#61dafb;
+  color: black;
+  transform: 5s;
+}
+
+.secondButton {
+  background-color: grey;
+  color: white;
+  transform: 5s;
+}

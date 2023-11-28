@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { Loader } from "../components/Spinner";
 
 export function ProfileBookings({ name }) {
   const [bookings, setBookings] = useState([]);
@@ -36,33 +36,56 @@ export function ProfileBookings({ name }) {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center">
-        Loading...
+      <div className="container">
+        <Loader />
       </div>
     );
   }
 
-
-
   return (
-    <Container className="venues d-flex justify-content-center align-items-center">
-      <h2>Your bookings:</h2>
-      <ul>
-        {bookings.map((booking) => (
-          <li key={booking.id}>
-            <div>
-              <h5>{booking.venue.name}</h5>
-              <p>{booking.venue.description}</p>
-              <p>Price: {booking.venue.price}</p>
-              <img src={booking.venue.media[0]} alt={booking.venue.name} width={"200px"}/>
-              <p>
-               Booking dates:  {new Date(booking.dateFrom).toLocaleDateString()} to{" "}
-                {new Date(booking.dateTo).toLocaleDateString()}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <Container className="pt-5">
+      <h2 className="subTitle">Your bookings:</h2>
+      <Row sm={1} md={3} lg={4}>
+       
+          {bookings.map((booking) => (
+            <Col className="col-12 col-sm-6 col-md-3 p-3" key={booking.id}>
+              <div className="card h-100 p-2 m-2 d-flex align-items-center">
+                <div>
+                  <img
+                    src={booking.venue.media[0]}
+                    alt={booking.venue.name}
+                    
+                    width="100%"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className="p-2 m-2 align-items-center">
+                  <h1
+                    className="subTitle
+              "
+                  >
+                    {booking.venue.name}
+                  </h1>
+                  <p>
+                    Address for property: {booking.venue.location.address + ", " +
+                    booking.venue.location.city.toUpperCase() +
+                      ", " +
+                      booking.venue.location.country.toUpperCase()}
+                  </p>
+                  Booked for {booking.guests} {booking.guests <= 1 ? 'person' : 'people'}
+                  <p>Price per night: {booking.venue.price},-</p>
+
+                  <p>
+                    Booking dates: from{" "}
+                    {new Date(booking.dateFrom).toLocaleDateString()} to{" "}
+                    {new Date(booking.dateTo).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            </Col>
+          ))}
+       
+      </Row>
     </Container>
   );
 }
