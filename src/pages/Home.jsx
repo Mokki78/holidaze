@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import * as ButtonStyle from "../styled.components/Button.style";
+import { Loader } from "../components/Spinner";
 import { Icon } from "@iconify/react";
+
 
 
 export const Home = () => {
@@ -32,9 +34,7 @@ export const Home = () => {
     };
   }, []);
 
-  const Loader = () => {
-    return <div>Loading</div>;
-  };
+  
 
   const letsNavigate = useNavigate();
 
@@ -75,6 +75,7 @@ export const Home = () => {
                 </ButtonStyle.Button>
               );
             })}
+    
           </Row>
         </Container>
       </>
@@ -91,6 +92,7 @@ export const Home = () => {
         {loading ? <Loader /> : <ShowVenues />}
       </div>
     </div>
+    
   );
 };
 

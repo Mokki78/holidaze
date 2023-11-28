@@ -55,9 +55,9 @@ export const Search = () => {
   const searchOptions = filteredVenues.map((venue) => venue.name);
 
   return (
-    <div className="container">
+    <div className="headerSearch">
       <div className="row">
-        <div className="col-lg-10 mb-5"></div>
+        <div className="col-10 mb-5"></div>
       </div>
       <div className="row justify-content-center">
         {loading ? (

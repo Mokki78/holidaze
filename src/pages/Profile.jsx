@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ProfileBookings } from "../components/ProfileBookings";
 import { UseAvatarUpdate } from "../components/AvatarUpdate";
 import { useNavigate } from "react-router-dom";
+import { Loader} from "../components/Spinner";
 import { Container, Row, Col} from "react-bootstrap";
 
 
@@ -47,31 +48,32 @@ export function Profile() {
   return (
     <div>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
-        <Container className="venues d-flex justify-content-center align-items-center">
-          <h1>{name}</h1>
+        <Container className="d-flex justify-content-center align-items-center bg-light shadow-sm p-3 m-4">
+          <h1 className="title">{name}</h1>
           <div>
-            <img src={avatar} height="150px" alt={`${name}'s Avatar`} />
+            <img src={avatar} className="profileImgA" alt={`${name}'s Avatar`}/>
 
             <form>
               <label>
-                Upload a valid URL image
+              
                 <input
+                   placeholder="Upload a valid URL image" 
                   type="text"
                   value={newAvatarUrl}
                   onChange={handleInputChange}
                 />
               </label>
-              <button type="button" onClick={handleClick}>
-                Update your profile img
+              <button type="button" className="mainButton" onClick={handleClick}>
+                Update img
               </button>
             </form>
           </div>
         </Container>
       )}
       <div>
-        <ProfileBookings name={name} />
+       { ProfileBookings.length > 0 ? ( <ProfileBookings  name={name}/> ) : ( <h3>You have no bookings yet</h3>)}
       </div>
       {avatarUpdateLoading && <p>Updating avatar...</p>}
       {avatarUpdateError}

@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.container {
+
+}
+
 .logo {
   font-family: scrapbooker-script, sans-serif;
   font-style: normal;
@@ -21,10 +25,50 @@ code {
   padding: 10px;
 }
 
-.venues {
-  z-index: 1;
+.title {
+  font-family: "scrapbooker-sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #428da8;
+  font-size: 3rem;
+  padding: 20px;
  
 }
+
+.subTitle {
+  font-family: "scrapbooker-sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #428da8;
+  font-size: 2rem;
+
+}
+
+.profileCont {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.profileImg {
+  max-width: 100%;
+  height: 100px;
+  border-radius: 50%;
+ padding: 30px;
+  margin: 20px;
+
+}
+
+.profileImgA {
+  max-width: 100%;
+  height: 150px;
+  border-radius: 50%;
+ padding: 40px;
+  margin-top: 50px;
+
+}
+
+
 
 .menu a {
   color: #428da8;
@@ -32,12 +76,12 @@ code {
 }
 
 .headerSearch {
-  height: 60px;
-  border: 0.5px solid black;
+  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 5px;
+  
   position: relative;
   z-index: 2;
 }
@@ -119,9 +163,8 @@ code {
   width: 200px;
   display: flex;
   flex-direction: row;
-   margin: 0 auto;
+  margin: 0 auto;
   gap: 30px;
-
 }
 
 .bookingCounter {
@@ -146,12 +189,16 @@ code {
   background-color: white;
 }
 
-.rClose{
+.rClose {
   position: absolute;
   top: 130px;
   right: 200px;
   z-index: 2;
+}
 
+.reserve {
+  position: relative;
+  z-index: 1;
 }
 
 .rButton {
@@ -160,3 +207,63 @@ code {
   right: 500px;
   z-index: 2;
 }
+
+.submitButton {
+  background-color: #428da8;
+  color: white;
+  padding: 10 30px;
+}
+
+.submitButton:hover {
+  background-color: grey;
+  color: black;
+  transform: 5s;
+}
+
+.cancelButton {
+  background-color: grey;
+  color: white;
+  transform: 5s;
+}
+
+.mainButton {
+  background-color: #428da8;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  margin: 30px;
+  z-index: 2;
+}
+
+.mainButton:hover {
+  background-color: #cbcbcb;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 10% 10%;
+  margin: 30px;
+  z-index: 1;
+}
+
+.createButton {
+  background-color: #428da8;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  margin: 30px;
+  z-index: 1;
+  position: absolute;
+  top: 150px;
+  right: 100px;
+}
+
+.createButton:hover {
+  background-color: #cbcbcb;
+  color: white;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 10% 10%;
+  margin: 30px;
+  z-index: 1;
+}
+

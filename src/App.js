@@ -1,5 +1,5 @@
 import React from 'react';
-import "./App.css";
+import styles from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import { NavBar } from "../src/components/Navbar";
 import { Container } from "react-bootstrap";
@@ -20,7 +20,7 @@ import {AdminVenues} from "../src/components/AdminVenues"
 function App() {
   return (
     <>
-      <Container>
+      <Container className={styles.app}>
       <NavBar />
         <Routes>
           <Route path="/" index element={<Home />} />

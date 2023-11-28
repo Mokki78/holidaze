@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ReadOnly } from "../components/ReadOnly";
 import { Update } from "../components/Update";
+import { Loader } from "../components/Spinner";
 
 export const AdminVenues = ({ name }) => {
   const [data, setData] = useState([]);
@@ -186,14 +187,14 @@ export const AdminVenues = ({ name }) => {
   const ShowAdminVenues = () => {
     return (
       <>
-        <h1>Your venues:</h1>
-        <div className="venues d-flex justify-content-center align-items-center">
+        <h1 className="subTitle">Your venues:</h1>
+        <div className="d-flex flex-column p-3 m-5">
        
             <div className="row">
               {data.map((venue) => (
                 <>
-                  <div className="col-md-3 p-3" key={venue.id}>
-                    <div className="card h-100 text-center p-4">
+                  <div  key={venue.id}>
+                    <div  className="col-5 card h-100 p-4">
                       <img
                         src={venue.media}
                         height="250px"
@@ -235,7 +236,7 @@ export const AdminVenues = ({ name }) => {
       </div>
       <div className="row justify-content-center">
         {isLoading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : isError ? (
           <p>Error fetching data</p>
         ) : (

@@ -1,15 +1,15 @@
 import React from "react";
 
-
 export const Update = ({
   editFormData,
   handleEditFormChange,
   handleEditFormSubmit,
 }) => {
+
+
   return (
     <form onSubmit={handleEditFormSubmit}>
       <>
-      
         <div>
           <div>
             <h2>
@@ -84,7 +84,6 @@ export const Update = ({
             <p>
               <input
                 type="checkbox"
-                
                 name="breakfast"
                 placeholder="Does the stay include breakfast"
                 checked={editFormData.breakfast}
@@ -162,11 +161,12 @@ export const Update = ({
               ></input>{" "}
             </p>
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" className="mainButton">
+            Save
+          </button>
+         
         </div>
-    
       </>
-      
     </form>
   );
 };
