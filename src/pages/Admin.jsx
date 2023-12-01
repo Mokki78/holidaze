@@ -4,7 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import { AdminCreate } from "../components/AdminCreate";
 import { Loader } from "../components/Spinner";
 import { AdminVenues } from "../components/AdminVenues";
-import {Container, Row, Col} from "react-bootstrap";
+import {Container} from "react-bootstrap";
+
 
 export function Admin() {
   const { state } = useAuth();
@@ -37,26 +38,28 @@ export function Admin() {
     setOpenModal(true);
   };
 
-  return (
-    <Container className="d-flex flex-column">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="d-flex flex-row justify-content-center align-items-center ">
+
+
+return (
+  <div>
+    {loading ? (
+      <Loader />
+    ) : (
+      <Container className="d-flex justify-content-center align-items-center bg-light shadow-sm p-3 m-4">
+          <div className="d-flex flex-row justify-content-center align-items-center ">
           <h1 className="title">Admin Dashboard</h1>
-        </div>
-      )}
-      <div>
-        <div>
+          <div>
           <button className="createButton" onClick={handleClick}>
             Create
           </button>
+          </div>
         </div>
-        <AdminVenues name={userDetails.name} />
-        {openModal && <AdminCreate setOpenModal={setOpenModal} />}
-      </div>
-    </Container>
-  );
+      </Container>
+    )}
+     <AdminVenues name={userDetails.name} />
+        {openModal && <AdminCreate setOpenModal={setOpenModal}  />}
+   </div>
+);
 }
 
-export default Admin;
+export default  Admin;

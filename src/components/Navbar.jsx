@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";
@@ -19,20 +21,22 @@ export function NavBar() {
             Holidaze
           </Link>
           <Search />
-          <img src={userDetails.avatar} className="profileImg" alt={`${userDetails.name}'s Avatar`}/>
           {userDetails ? (
-            <NavDropdown
-              title={userDetails.name}
-              id="basic-nav-dropdown"
-             
-            >
-              {userDetails.venueManager === true ? (
-                <NavDropdown.Item href="/admin">Admin page</NavDropdown.Item>
-              ) : (
-                <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-              )}
-              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-            </NavDropdown>
+            <>
+              <img
+                src={userDetails.avatar}
+                className="profileImg"
+                alt={`${userDetails.name}'s Avatar`}
+              />
+              <NavDropdown title={userDetails.name} id="basic-nav-dropdown">
+                {userDetails.venueManager === true ? (
+                  <NavDropdown.Item href="/admin">Admin page</NavDropdown.Item>
+                ) : (
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                )}
+                <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+              </NavDropdown>
+            </>
           ) : (
             <NavDropdown title="Register/Login" id="basic-nav-dropdown">
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
@@ -47,3 +51,4 @@ export function NavBar() {
 }
 
 export default NavBar;
+

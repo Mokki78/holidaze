@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ReadOnly } from "../components/ReadOnly";
 import { Update } from "../components/Update";
 import { Loader } from "../components/Spinner";
+import { Container, Row, Col } from "react-bootstrap";
 
-export const AdminVenues = ({ name }) => {
+import Layout from "../components/Layout";
+
+export const AdminVenues = ({ name, setOpenLocalModal }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
   const [venue, setVenue] = useState({});
   let { id } = useParams();
+  const navigate = useNavigate();
 
   const [editFormData, setEditFormData] = useState({
-    name: "",
+    name: " ",
     description: "",
     media: "",
     price: "",
@@ -31,12 +36,13 @@ export const AdminVenues = ({ name }) => {
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
-  
+
     const fieldName = event.target.name;
-    let fieldValue = event.target.type === "checkbox"
-      ? event.target.checked
-      : event.target.value;
-  
+    let fieldValue =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
+
     if (fieldName === "price") {
       fieldValue = parseFloat(fieldValue);
     }
@@ -48,16 +54,20 @@ export const AdminVenues = ({ name }) => {
     if (fieldName === "rating") {
       fieldValue = parseFloat(fieldValue);
     }
-  
-  
+
     setEditFormData((prevFormData) => ({
       ...prevFormData,
       [fieldName]: fieldValue,
     }));
   };
 
+  
 
   useEffect(() => {
+    console.log("Effect triggered");
+    console.log("editFormData:", editFormData);
+    console.log("editVenueId:", editVenueId);
+
     const fetchVenues = async () => {
       try {
         const response = await fetch(
@@ -72,6 +82,7 @@ export const AdminVenues = ({ name }) => {
         if (response.ok) {
           const data = await response.json();
           setData(data);
+          setVenue({})
         } else {
           console.error("Error fetching venues");
           setIsError(true);
@@ -99,10 +110,7 @@ export const AdminVenues = ({ name }) => {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
-        
       );
-
-     
 
       alert("Are you sure you want to delete this venue?");
 
@@ -116,14 +124,12 @@ export const AdminVenues = ({ name }) => {
     } catch (error) {
       console.error("An error has occurred", error);
     }
-  }
-
+  };
 
   const [editVenueId, setEditVenueId] = useState(null);
 
   const handleEditClick = (event, venue) => {
     event.preventDefault();
-    setEditVenueId(venue.id);
 
     const formValues = {
       name: venue.name,
@@ -138,17 +144,15 @@ export const AdminVenues = ({ name }) => {
       pets: venue.meta.pets,
       address: venue.location.address,
       city: venue.location.city,
-      zip: venue.location.zip,
       country: venue.location.country,
-      continent: venue.location.continent,
     };
 
     setEditFormData(formValues);
+    setEditVenueId(venue.id);
   };
 
   const handleEditFormSubmit = async (event) => {
     event.preventDefault();
-
     console.log("Form Data before submit:", editFormData);
 
     try {
@@ -161,17 +165,17 @@ export const AdminVenues = ({ name }) => {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
           body: JSON.stringify(editFormData),
-        
         }
-         
       );
 
-      console.log("My formdata:", editFormData)
+      console.log("My formdata:", editFormData);
 
       if (response.ok) {
         console.log("Venue updated successfully");
+        setOpenLocalModal(false);
+        navigate("/admin");
+
         alert("Venue updated successfully!");
-        
       } else {
         console.error("Error updating venue");
         alert("Error updating venue");
@@ -182,67 +186,55 @@ export const AdminVenues = ({ name }) => {
     }
   };
 
-
-
   const ShowAdminVenues = () => {
     return (
-      <>
-        <h1 className="subTitle">Your venues:</h1>
-        <div className="d-flex flex-column p-3 m-5">
-       
-            <div className="row">
-              {data.map((venue) => (
-                <>
-                  <div  key={venue.id}>
-                    <div  className="col-5 card h-100 p-4">
-                      <img
-                        src={venue.media}
-                        height="250px"
-                        width="100%"
-                        alt={venue.title}
-                        style={{ objectFit: "cover" }}
-                      />
+      <Layout>
+        <Container className="pt-5">
+          <h1 className="subTitle">Your venues:</h1>
+          <Row>
+            {data.map((venue) => (
+              <Col className="col-12 col-sm-6 col-md-5 p-3" key={venue.id}>
+                <div className="card h-100 p-2 m-2 d-flex align-items-center">
+                  <img
+                    src={venue.media}
+                    height="250px"
+                    width="100%"
+                    alt={venue.title}
+                    style={{ objectFit: "cover" }}
+                  />
 
-                      {editVenueId === venue.id ? (
-                        <Update
-                          editFormData={editFormData}
-                          handleEditFormChange={handleEditFormChange}
-                          handleEditFormSubmit={handleEditFormSubmit}
-                        />
-                      ) : (
-                        <ReadOnly
-                          venue={venue}
-                          handleEditClick={handleEditClick}
-                          handleDelete={handleDelete}
-                        />
-                      )}
-
-                 
-                    </div>
-                  </div>
-                </>
-              ))}
-            </div>
-      
-        </div>
-      </>
+                  {editVenueId === venue.id ? (
+                    <Update
+                      setOpenLocalModal={setOpenLocalModal}
+                      editFormData={editFormData}
+                      handleEditFormChange={handleEditFormChange}
+                      handleEditFormSubmit={handleEditFormSubmit}
+                    />
+                  ) : (
+                    <ReadOnly
+                      venue={venue}
+                      handleEditClick={handleEditClick}
+                      handleDelete={handleDelete}
+                    />
+                  )}
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </Layout>
     );
   };
 
   return (
-    <div className="container my-3 py-1">
-      <div className="row">
-        <div className="col-12 mb-5"></div>
-      </div>
-      <div className="row justify-content-center">
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
-          <p>Error fetching data</p>
-        ) : (
-          <ShowAdminVenues />
-        )}
-      </div>
+    <div className="container">
+      {isLoading ? (
+        <Loader />
+      ) : isError ? (
+        <p>Error fetching data</p>
+      ) : (
+        <ShowAdminVenues />
+      )}
     </div>
   );
 };

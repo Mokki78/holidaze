@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Container, Row} from "react-bootstrap";
 import Layout from "../components/Layout";
 
-export function AdminCreate({ setOpenModal}) {
-
- 
+export function AdminCreate({ setOpenModal }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
@@ -19,11 +17,10 @@ export function AdminCreate({ setOpenModal}) {
   const [pets, setPets] = useState(false);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
+  
   const [country, setCountry] = useState("");
-  const [continent, setContinent] = useState("");
+ 
   const [data, setData] = useState({});
-
 
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,9 +45,9 @@ export function AdminCreate({ setOpenModal}) {
       location: {
         address: address,
         city: city,
-        zip: zip,
+       
         country: country,
-        continent: continent,
+       
       },
     };
 
@@ -86,31 +83,25 @@ export function AdminCreate({ setOpenModal}) {
     }
   };
 
-
-
-
   return (
     <>
       <Layout>
-        <div className="row justify-content-md-center mt-5">
-          <div className="col-4">
+        <Container className="modalOverlay row justify-content-md-center mt-5">
+          <Row className="myForm col-4">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title mb-4">Create Venue</h5>
                 <form onSubmit={(e) => createVenueAction(e)}>
-                <FontAwesomeIcon
-  icon={faCircleXmark}
-  className="rClose"
-  onClick={(e) => {
-    e.preventDefault(); // Prevent form submission
-    setOpenModal(false);
-  }}
-/>
+                  <FontAwesomeIcon
+                    icon={faCircleXmark}
+                    className="rClose"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpenModal(false);
+                    }}
+                  />
                   <div className="mb-3">
-                    <label htmlFor="name" className="form-label">
-                      Title:
-                    </label>
                     <input
+                      placeholder="Title:"
                       required
                       type="text"
                       className="form-control"
@@ -130,10 +121,8 @@ export function AdminCreate({ setOpenModal}) {
                     )}
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="description" className="form-label">
-                      Make a detailed description of the property:
-                    </label>
                     <input
+                      placeholder="Make a detailed description of the property:"
                       required
                       type="text"
                       className="form-control"
@@ -168,6 +157,7 @@ export function AdminCreate({ setOpenModal}) {
                       Price per night:
                     </label>
                     <input
+                      placeholder="Price per night:"
                       required
                       type="number"
                       className="form-control"
@@ -189,6 +179,7 @@ export function AdminCreate({ setOpenModal}) {
                       Max number of guests:
                     </label>
                     <input
+                      placeholder="Max number of guests:"
                       required
                       type="number"
                       className="form-control"
@@ -210,6 +201,7 @@ export function AdminCreate({ setOpenModal}) {
                       Rating: ( max rating is 5)
                     </label>
                     <input
+                      placeholder="  Rating: ( max rating is 5)"
                       type="number"
                       className="form-control"
                       id="rating"
@@ -282,10 +274,8 @@ export function AdminCreate({ setOpenModal}) {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="address" className="form-label">
-                      Address:
-                    </label>
                     <input
+                      placeholder="Address:"
                       type="text"
                       className="form-control"
                       id="address"
@@ -302,10 +292,8 @@ export function AdminCreate({ setOpenModal}) {
                     )}
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="city" className="form-label">
-                      City:
-                    </label>
                     <input
+                      placeholder="City:"
                       type="text"
                       className="form-control"
                       id="city"
@@ -321,31 +309,10 @@ export function AdminCreate({ setOpenModal}) {
                       </div>
                     )}
                   </div>
+
                   <div className="mb-3">
-                    <label htmlFor="zip" className="form-label">
-                      Zip:
-                    </label>
                     <input
-                      type="text"
-                      className="form-control"
-                      id="zip"
-                      name="zip"
-                      value={zip}
-                      onChange={(e) => setZip(e.target.value)}
-                    />
-                    {validationErrors.zip !== undefined && (
-                      <div className="flex flex-col">
-                        <small className="text-danger">
-                          {validationErrors.zip[0]}
-                        </small>
-                      </div>
-                    )}
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="country" className="form-label">
-                      Country:
-                    </label>
-                    <input
+                      placeholder="Country:"
                       type="text"
                       className="form-control"
                       id="country"
@@ -361,26 +328,6 @@ export function AdminCreate({ setOpenModal}) {
                       </div>
                     )}
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="continent" className="form-label">
-                      Continent:
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="continent"
-                      name="continent"
-                      value={continent}
-                      onChange={(e) => setContinent(e.target.value)}
-                    />
-                    {validationErrors.continent !== undefined && (
-                      <div className="flex flex-col">
-                        <small className="text-danger">
-                          {validationErrors.continent[0]}
-                        </small>
-                      </div>
-                    )}
-                  </div>
 
                   <div className="d-grid gap-2">
                     <button
@@ -390,13 +337,19 @@ export function AdminCreate({ setOpenModal}) {
                     >
                       Create
                     </button>
-                   <button type="button" className="mainButton" onClick={() => setOpenModal(false)}>Cancel</button>
+                    <button
+                      type="button"
+                      className="mainButton"
+                      onClick={() => setOpenModal(false)}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
-          </div>
-        </div>
+          </Row>
+        </Container>
       </Layout>
     </>
   );
