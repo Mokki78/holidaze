@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { ProfileBookings } from "../components/ProfileBookings";
 import { UseAvatarUpdate } from "../components/AvatarUpdate";
 import { useNavigate } from "react-router-dom";
-import { Loader} from "../components/Spinner";
-import { Container, Row, Col} from "react-bootstrap";
-
+import { Loader } from "../components/Spinner";
+import { Container } from "react-bootstrap";
+import { PopUp } from "../components/AvatarPop-up";
 
 export function Profile() {
   const [avatar, setAvatar] = useState("");
@@ -32,9 +32,7 @@ export function Profile() {
   }, []);
 
   const handleClick = () => {
-    
     if (newAvatarUrl) {
-  
       UseAvatarUpdate(name);
     } else {
       console.log("No new avatar URL provided");
@@ -53,19 +51,26 @@ export function Profile() {
         <Container className="d-flex justify-content-center align-items-center bg-light shadow-sm p-3 m-4">
           <h1 className="title">{name}</h1>
           <div>
-            <img src={avatar} className="profileImgA" alt={`${name}'s Avatar`}/>
+            <img
+              src={avatar}
+              className="profileImgA"
+              alt={`${name}'s Avatar`}
+            />
 
             <form>
               <label>
-              
                 <input
-                   placeholder="Upload a valid URL image" 
+                  placeholder="Upload a valid URL image"
                   type="text"
                   value={newAvatarUrl}
                   onChange={handleInputChange}
                 />
               </label>
-              <button type="button" className="mainButton" onClick={handleClick}>
+              <button
+                type="button"
+                className="mainButton"
+                onClick={handleClick}
+              >
                 Update img
               </button>
             </form>
@@ -73,7 +78,11 @@ export function Profile() {
         </Container>
       )}
       <div>
-       { ProfileBookings.length > 0 ? ( <ProfileBookings  name={name}/> ) : ( <h3>You have no bookings yet</h3>)}
+        {ProfileBookings.length > 0 ? (
+          <ProfileBookings name={name} />
+        ) : (
+          <h3>You have no bookings yet</h3>
+        )}
       </div>
       {avatarUpdateLoading && <p>Updating avatar...</p>}
       {avatarUpdateError}

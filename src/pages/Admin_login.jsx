@@ -3,9 +3,9 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
+
 export function LoginAdmin() {
   const { dispatch } = useAuth();
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -126,6 +126,7 @@ export function LoginAdmin() {
                     disabled={isSubmitting}
                     type="submit"
                     className="btn btn-primary btn-block"
+                   
                   >
                     Login
                   </button>

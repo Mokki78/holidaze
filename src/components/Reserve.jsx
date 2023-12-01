@@ -114,7 +114,7 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
 
   return (
     <>
-      <Container className="reserve">
+      <Container className="modalOverlay">
         <Booking
           selectedDateRange={selectedDateRange}
           onDateRangeChange={handleDateRangeChange}
