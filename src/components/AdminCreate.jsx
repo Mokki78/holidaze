@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row} from "react-bootstrap";
-import Layout from "../components/Layout";
+
 
 export function AdminCreate({ setOpenModal }) {
   const [name, setName] = useState("");
@@ -85,7 +85,7 @@ export function AdminCreate({ setOpenModal }) {
 
   return (
     <>
-      <Layout>
+  
         <Container className="modalOverlay row justify-content-md-center mt-5">
           <Row className="myForm col-4">
             <div className="card">
@@ -350,7 +350,7 @@ export function AdminCreate({ setOpenModal }) {
             </div>
           </Row>
         </Container>
-      </Layout>
+    
     </>
   );
 }

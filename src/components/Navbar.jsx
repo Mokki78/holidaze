@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { Container, Navbar as NavbarBs, NavDropdown } from "react-bootstrap";

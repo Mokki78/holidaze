@@ -4,6 +4,7 @@ import { UseAvatarUpdate } from "../components/AvatarUpdate";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../components/Spinner";
 import { Container } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 
 export function Profile() {
@@ -49,6 +50,11 @@ export function Profile() {
         <Loader />
       ) : (
         <Container className="d-flex justify-content-center align-items-center bg-light shadow-sm p-3 m-4">
+             <Helmet>
+            <title>{name}`s profile page</title>
+            <meta name="description" content="Profile page for user." />
+            <meta name="keywords" content="Profile page react booking app" />
+          </Helmet>
           <h1 className="title">{name}</h1>
           <div>
             <img

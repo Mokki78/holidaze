@@ -4,6 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import * as ButtonStyle from "../styled.components/Button.style";
 import { Loader } from "../components/Spinner";
 import { Icon } from "@iconify/react";
+import { Helmet } from "react-helmet";
 
 
 
@@ -42,6 +43,11 @@ export const Home = () => {
     return (
       <>
         <Container className="venues d-flex justify-content-center align-items-center">
+        <Helmet>
+            <title>Holidaze Home</title>
+            <meta name="description" content="Homepage for Holidaze." />
+            <meta name="keywords" content="Homepage Holidaze react booking app" />
+          </Helmet>
           <Row>
             {venues.map((venue) => {
               return (

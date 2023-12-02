@@ -12,6 +12,7 @@ import { Login } from "../src/pages/Login";
 import { Register } from "../src/pages/Register";
 import { Logout } from "../src/pages/Logout";
 import { LoginAdmin } from "../src/pages/Admin_login";
+import { Layout } from "../src/components/Layout";
 import {AdminVenues} from "../src/components/AdminVenues"
 
 
@@ -23,7 +24,8 @@ function App() {
       <Container className={styles.app}>
       <NavBar />
         <Routes>
-          <Route path="/" index element={<Home />} />
+         <Route path="/" element={<Layout />} />
+          <Route index element={<Home />} />
           <Route path="/singlevenue/:id" element={<SingleVenue />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />

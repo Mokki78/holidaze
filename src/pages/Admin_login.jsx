@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
 
 
 export function LoginAdmin() {
@@ -72,8 +72,13 @@ export function LoginAdmin() {
   };
 
   return (
-    <Layout>
+   
       <div className="row justify-content-md-center mt-5">
+          <Helmet>
+            <title>Holidaze Admin Login</title>
+            <meta name="description" content="Login for admin account" />
+            <meta name="keywords" content="Login admin account react booking app" />
+          </Helmet>
         <div className="col-4">
           <div className="card">
             <div className="card-body">
@@ -135,7 +140,7 @@ export function LoginAdmin() {
                   </p>
 
                   <p className="text-center">
-                    Don't have account?{" "}
+                    Do you not have an account?{" "}
                     <Link to="/register">Register here</Link>
                   </p>
                 </div>
@@ -144,7 +149,7 @@ export function LoginAdmin() {
           </div>
         </div>
       </div>
-    </Layout>
+   
   );
 }
 

@@ -5,6 +5,7 @@ import { AdminCreate } from "../components/AdminCreate";
 import { Loader } from "../components/Spinner";
 import { AdminVenues } from "../components/AdminVenues";
 import {Container} from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 
 export function Admin() {
@@ -46,6 +47,11 @@ return (
       <Loader />
     ) : (
       <Container className="d-flex justify-content-center align-items-center bg-light shadow-sm p-3 m-4">
+          <Helmet>
+            <title>Holidaze Admin Dashboard</title>
+            <meta name="description" content="Admin page." />
+            <meta name="keywords" content="Admin page react booking app" />
+          </Helmet>
           <div className="d-flex flex-row justify-content-center align-items-center ">
           <h1 className="title">Admin Dashboard</h1>
           <div>
