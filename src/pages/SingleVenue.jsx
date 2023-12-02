@@ -75,6 +75,7 @@ export function SingleVenue( disabledDateRanges) {
           
        
           <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 mt-5 mx-5">
+          <h1 className="title">{data.name}</h1>
             <img
               src={data.media}
               className="img-fluid"
@@ -84,7 +85,7 @@ export function SingleVenue( disabledDateRanges) {
             />
           </Col>
           <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
-            <h1 className="title">{data.name}</h1>
+           
             <p>{data.location.city + ", " + data.location.country} </p>
 
             <p className="p-5 bg-light">{data.description}</p>
