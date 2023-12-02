@@ -1,6 +1,5 @@
 <h1>Project Exam 2- Holidaze</h1>
 <br></br>
-<br></br>
 <strong>Description</strong>
 <br></br>
 
@@ -15,8 +14,7 @@ There is a search option where you can find venues by name.
 
  The user/customer can register an account and login to a profile page,
  and make bookings for veneus when logged in. 
-
-  On users profile page they can see their bookings, and they can change their profile image/avatar.
+ On users profile page they can see their bookings, and they can change their profile image/avatar.
 
  There is a seperat admin login/register option, and users logged in as admins can create, update and delete
  venues and see their venues on their admin own page/dashboard.
@@ -38,29 +36,29 @@ There is a search option where you can find venues by name.
 The link to the prototype for reference: https://xd.adobe.com/view/fbd19979-8690-421c-9a85-639373ccaf91-ae82/.
 
 After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready tp deploy the site run npm run build.
-</p<>
+</p>
 
 <h2>Installing</h2>
 
 <p>This website is built in Visual Studio Code and the repository is made in Github.</p>
+<p>Clone the repo: https://github.com/Mokki78/holidaze</p>
 
 <ul>
-<li>Clone the repo: https://github.com/Mokki78/holidaze</li>
-<li> Install the dependecies:</li>
-   <li> npm</li>
-    <li>Prettier</li> 
-    <li>ESTLint</li>
-    <li>React Bootstrap v.2.9.0</li> 
-    <li>Bootstrap.v.5.3.2</li> 
-    <li>React Bootstrap typeahead v.6.3.2</li>
-    <li>React date range v.1.4.0</li> 
-    <li>React dom v.18.2.0</li> 
-    <li>React modal v.3.16.1</li>    
-    <li>React overlays v.5.2.1</li> 
-    <li>React router dom v.6.17.0</li> 
-    <li>React toast v.1.0.3</li> 
-    <li>Reactjs-popup v.2.0.6</li> 
-    <li>@fortawesome/react-fontawesome v.0.2.0</li>
+<string> Install the dependecies:</strong>
+   <li> npm https://docs.npmjs.com/downloading-and-installing-node-js-and-npm</li>
+    <li>Prettier https://prettier.io/docs/en/install.html</li> 
+    <li>ESTLint https://eslint.org/docs/latest/use/getting-started</li>
+    <li>React Bootstrap v.2.9.0 https://www.npmjs.com/package/react-bootstrap?activeTab=versions</li> 
+    <li>Bootstrap.v.5.3.2 https://getbootstrap.com/docs/5.3/getting-started/download/</li> 
+    <li>React Bootstrap typeahead v.6.3.2 React Bootstrap typeahead v.6.3.2</li>
+    <li>React date range v.1.4.0 https://www.npmjs.com/package/react-date-range</li> 
+    <li>React dom v.18.2.0 https://www.npmjs.com/package/react-dom/v/18.2.0-next-52c434be1-20220512</li> 
+    <li>React modal v.3.16.1 https://www.npmjs.com/package/react-modal</li>    
+    <li>React overlays v.5.2.1 https://www.npmjs.com/package/react-overlays</li> 
+    <li>React router dom v.6.17.0 https://www.npmjs.com/package/react-router-dom/v/6.17.0</li> 
+    <li>React toast v.1.0.3 https://www.npmjs.com/package/react-toast</li> 
+    <li>Reactjs-popup v.2.0.6 https://www.npmjs.com/package/reactjs-popup</li> 
+    <li>@fortawesome/react-fontawesome v.0.2.0 https://www.npmjs.com/package/@fortawesome/react-fontawesome</li>
     <li>@fortawesome/free-solid-svg-icons v.6.4.2</li>
     </ul>
 
