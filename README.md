@@ -1,5 +1,8 @@
 <h1>Project Exam 2- Holidaze</h1>
+<br></br>
+<br></br>
 <strong>Description</strong>
+<br></br>
 
 <p>This is the project exam assignment for the 2 years course in Front-End Development at Noroff School of technology and digital media.
 
@@ -23,24 +26,27 @@ There is a search option where you can find venues by name.
 
 <strong> The booking app is to be developed with:</strong>
  <ul>
-  <li>Planned application: Trello og Github Projects</li>
-  <li> Design application: Adobe XD, Figma or Sketch</li>
-  <li> Javascript Framework: React(>16)</li>
-  <li>CSS Framework: Bootstrap(>5), Tailwind(>3), CSS Modules or Style components, MUI(>5</li>
+  <li>Planned application: Trello og Github Projects.</li>
+  <li> Design application: Adobe XD, Figma or Sketch.</li>
+  <li> Javascript Framework: React(>16).</li>
+  <li>CSS Framework: Bootstrap(>5), Tailwind(>3), CSS Modules or Style components, MUI(>5).</li>
   <li>Hosting service: Netlify or Github pages.</li>
 
 <h2>Getting started</h2>
 
-<p>This app is built using npm and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css.There is several dependencies both for styling and components.
-The link to the prototype for reference: </p<>
+<p>This app is built using npm v.8.19.3 and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css. There are several dependencies both for styling and components.
+The link to the prototype for reference: https://xd.adobe.com/view/fbd19979-8690-421c-9a85-639373ccaf91-ae82/.
+
+After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready tp deploy the site run npm run build.
+</p<>
 
 <h2>Installing</h2>
 
 <p>This website is built in Visual Studio Code and the repository is made in Github.</p>
 
-<ol>
-<li>1. Clone the repo: https://github.com/Mokki78/holidaze</li>
-<li>2. Install the dependecies:</li>
+<ul>
+<li>Clone the repo: https://github.com/Mokki78/holidaze</li>
+<li> Install the dependecies:</li>
    <li> npm</li>
     <li>Prettier</li> 
     <li>ESTLint</li>
@@ -56,6 +62,7 @@ The link to the prototype for reference: </p<>
     <li>Reactjs-popup v.2.0.6</li> 
     <li>@fortawesome/react-fontawesome v.0.2.0</li>
     <li>@fortawesome/free-solid-svg-icons v.6.4.2</li>
+    </ul>
 
 <h2>Contributing</h2>
 
@@ -93,7 +100,7 @@ The link to the prototype for reference: </p<>
 <li>https://github.com/moharnadreza/react-toast</li>
 
 <li>https://mockitt.wondershare.com/adobe-xd/adobe-xd-calendar.html</li>
-
+</ol>
 
 
 
