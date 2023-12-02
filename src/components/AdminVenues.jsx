@@ -5,7 +5,6 @@ import { Update } from "../components/Update";
 import { Loader } from "../components/Spinner";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Layout from "../components/Layout";
 
 export const AdminVenues = ({ name, setOpenLocalModal }) => {
   const [data, setData] = useState([]);
@@ -188,7 +187,7 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
 
   const ShowAdminVenues = () => {
     return (
-      <Layout>
+      
         <Container className="pt-5">
           <h1 className="subTitle">Your venues:</h1>
           <Row>
@@ -222,7 +221,7 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
             ))}
           </Row>
         </Container>
-      </Layout>
+     
     );
   };
 
