@@ -5,7 +5,7 @@
 
 The assignment is to design and develop a booking app with API provided by Noroff : https://docs.noroff.dev.
 
- Requirements for the task: 
+ <strong>Requirements for the task:</strong>
  On the main page there is a list of venues. 
  On each venue in the list there is a link to view a single venue.
 There is a search option where you can find venues by name.
@@ -13,12 +13,12 @@ There is a search option where you can find venues by name.
  The user/customer can register an account and login to a profile page,
  and make bookings for veneus when logged in. 
 
-  On users profile page they can see their bookings, and they can chnage their profile image/avatar.
+  On users profile page they can see their bookings, and they can change their profile image/avatar.
 
  There is a seperat admin login/register option, and users logged in as admins can create, update and delete
- venues and see their veneus on their admin page/dashboard.
+ venues and see their venues on their admin own page/dashboard.
 
- There is also a logout option, and on the single venue page there is a booking app where you can check for available dates,
+ There is also a logout option for both, and on the single venue page there is a booking app where you can check for available dates,
  and logged in users can make a booking.</p>
 
 <strong> The booking app is to be developed with:</strong>
@@ -29,11 +29,11 @@ There is a search option where you can find venues by name.
   <li>CSS: CSS Framework, like Bootstrap, CSS Modules or Style components,</li>
   <li>Deployed with: Netlify or Github pages.</li>
 
-<h2>Getting started<h2>
+<h2>Getting started</h2>
 
-<p>This app is built using npm and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css.There is several dependencies both for styling and components.</p<>>
+<p>This app is built using npm and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css.There is several dependencies both for styling and components.</p<>
 
-<h2>Installing<h2>
+<h2>Installing</h2>
 
 <p>This website is built in Visual Studio Code and the repository is made in Github. To download the code to participate in the project follow link.</p>
 
@@ -58,7 +58,7 @@ There is a search option where you can find venues by name.
 
 <h2>Acknowlegdments</h2>
 
-<p>For this project I have had the pleasure of getting tips and inspiration from these websites:<p>
+<p>For this project I have had the pleasure of getting tips and inspiration from these websites:</p>
 
 <ol>
 <li>https://www.youtube.com/watch?v=CHGHuF24Cjw</li>
