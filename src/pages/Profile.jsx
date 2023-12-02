@@ -4,7 +4,7 @@ import { UseAvatarUpdate } from "../components/AvatarUpdate";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../components/Spinner";
 import { Container } from "react-bootstrap";
-import { PopUp } from "../components/AvatarPop-up";
+
 
 export function Profile() {
   const [avatar, setAvatar] = useState("");
