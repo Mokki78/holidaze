@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { Reserve } from "../components/Reserve";
-import { Loader } from "../components/Spinner"
+import { Loader } from "../components/Spinner";
+import { Helmet } from "react-helmet";
 
-
-
-export function SingleVenue( disabledDateRanges) {
+export function SingleVenue(disabledDateRanges) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
-  const [ guests, setGuests ] = useState(1);
+  const [guests, setGuests] = useState(1);
   let { id } = useParams();
 
   console.log(userDetails);
@@ -45,7 +44,6 @@ export function SingleVenue( disabledDateRanges) {
     return (
       <>
         <Loader />
-        
       </>
     );
   }
@@ -67,52 +65,62 @@ export function SingleVenue( disabledDateRanges) {
       {loading ? (
         <Loader />
       ) : (
-      <Container
-        style={{ border: "0.5px solid #E3E3E3" }}
-        className="mt-5 mb-5"
-      >
-        <Row>
-          
-       
-          <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 mt-5 mx-5">
-          <h1 className="title">{data.name}</h1>
-            <img
-              src={data.media}
-              className="img-fluid"
-              alt={data.name}
-              maxWidth="150px"
-              style={{ minWidth: "150px" }}
-            />
-          </Col>
-          <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
-           
-            <p>{data.location.city + ", " + data.location.country} </p>
+        <Container
+          style={{ border: "0.5px solid #E3E3E3" }}
+          className="mt-5 mb-5"
+        >
+          <Helmet>
+            <title>Holidaze {data.name}</title>
+            <meta name="description" content="Single venue" />
+            <meta name="keywords" content="Single venue react booking app" />
+          </Helmet>
+          <Row>
+            <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 mt-5 mx-5">
+              <h1 className="title">{data.name}</h1>
+              <img
+                src={data.media}
+                className="img-fluid"
+                alt={data.name}
+                maxWidth="150px"
+                style={{ minWidth: "150px" }}
+              />
+            </Col>
+            <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
+              <p>{data.location.city + ", " + data.location.country} </p>
 
-            <p className="p-5 bg-light">{data.description}</p>
-            <div className="col-6">
-              <p>Max guests: {data.maxGuests}</p>
-              <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
-              <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
+              <p className="p-5 bg-light">{data.description}</p>
+              <div className="col-6">
+                <p>Max guests: {data.maxGuests}</p>
+                <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
+                <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
               </div>
               <div className="col-6">
-              <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
-              <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
-          
-            <strong className="bg-light p-2 mb-3 m-2">
-              Price per night {data.price},-
-            </strong>
-            </div>
+                <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
+                <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
 
-            <div>
-              <button className="mainButton"onClick={handleClick}>Check availability</button>
-            </div>
-          </Col>
-         
-          
-         
-        </Row>
-        {openModal && <Reserve setOpen={setOpenModal} venueId={id}  guests={guests} setGuests={setGuests} disabledDateRanges={disabledDateRanges}/>}
-      </Container>
+                <strong className="bg-light p-2 mb-3 m-2">
+                  Price per night {data.price},-
+                </strong>
+              </div>
+
+              <div>
+                <button className="mainButton" onClick={handleClick}>
+                  Check availability
+                </button>
+              </div>
+            </Col>
+          </Row>
+
+          {openModal && (
+            <Reserve
+              setOpen={setOpenModal}
+              venueId={id}
+              guests={guests}
+              setGuests={setGuests}
+              disabledDateRanges={disabledDateRanges}
+            />
+          )}
+        </Container>
       )}
     </>
   );

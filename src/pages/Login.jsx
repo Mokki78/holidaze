@@ -1,7 +1,8 @@
 import React, {  useEffect,  useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
+
 
 export function Login() {
   const navigate = useNavigate();
@@ -69,8 +70,13 @@ export function Login() {
   };
 
   return (
-    <Layout>
+    
       <div className="row justify-content-md-center mt-5">
+           <Helmet>
+            <title>Holidaze Login</title>
+            <meta name="description" content="Login page for user." />
+            <meta name="keywords" content="Login page user account react booking app" />
+          </Helmet>
         <div className="col-4">
           <div className="card">
             <div className="card-body">
@@ -139,7 +145,7 @@ export function Login() {
           </div>
         </div>
       </div>
-    </Layout>
+
   );
 }
 

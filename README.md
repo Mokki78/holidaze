@@ -1,7 +1,6 @@
 <h1>Project Exam 2- Holidaze</h1>
 <br></br>
 <strong>Description</strong>
-<br></br>
 
 <p>This is the project exam assignment for the 2 years course in Front-End Development at Noroff School of technology and digital media.
 
@@ -13,7 +12,7 @@ The assignment is to design and develop a booking app with API provided by Norof
 There is a search option where you can find venues by name.
 
  The user/customer can register an account and login to a profile page,
- and make bookings for veneus when logged in. 
+ and make bookings for venues when logged in. 
  On users profile page they can see their bookings, and they can change their profile image/avatar.
 
  There is a seperat admin login/register option, and users logged in as admins can create, update and delete
@@ -35,7 +34,7 @@ There is a search option where you can find venues by name.
 <p>This app is built using npm v.8.19.3 and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css. There are several dependencies both for styling and components.
 The link to the prototype for reference: https://xd.adobe.com/view/fbd19979-8690-421c-9a85-639373ccaf91-ae82/.
 
-After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready tp deploy the site run npm run build.
+After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready to deploy the site run npm run build. For testing
 </p>
 
 <h2>Installing</h2>
@@ -52,6 +51,7 @@ After installing a version of the repo on your computer, run npm run start in yo
     <li>Bootstrap.v.5.3.2 https://getbootstrap.com/docs/5.3/getting-started/download/</li> 
     <li>React Bootstrap typeahead v.6.3.2 React Bootstrap typeahead v.6.3.2</li>
     <li>React date range v.1.4.0 https://www.npmjs.com/package/react-date-range</li> 
+    <li>React helmet https://www.npmjs.com/package/react-helmet</li>
     <li>React dom v.18.2.0 https://www.npmjs.com/package/react-dom/v/18.2.0-next-52c434be1-20220512</li> 
     <li>React modal v.3.16.1 https://www.npmjs.com/package/react-modal</li>    
     <li>React overlays v.5.2.1 https://www.npmjs.com/package/react-overlays</li> 
@@ -98,6 +98,10 @@ After installing a version of the repo on your computer, run npm run start in yo
 <li>https://github.com/moharnadreza/react-toast</li>
 
 <li>https://mockitt.wondershare.com/adobe-xd/adobe-xd-calendar.html</li>
+
+<li>https://www.npmjs.com/package/react-helmet</li>
+
+<li>https://www.youtube.com/watch?v=92UDOLRydbw</li>
 </ol>
 
 

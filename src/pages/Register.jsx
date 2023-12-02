@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
+
 
 export function Register() {
   const navigate = useNavigate();
@@ -71,8 +72,13 @@ export function Register() {
   };
 
   return (
-    <Layout>
+    
       <div className="row justify-content-md-center mt-5">
+          <Helmet>
+            <title>Holidaze Register</title>
+            <meta name="description" content="Register for user account" />
+            <meta name="keywords" content="Register react booking app" />
+          </Helmet>
         <div className="col-4">
           <div className="card">
             <div className="card-body">
@@ -185,7 +191,7 @@ export function Register() {
           </div>
         </div>
       </div>
-    </Layout>
+
   );
 }
 
