@@ -23,19 +23,20 @@ There is a search option where you can find venues by name.
 
 <strong> The booking app is to be developed with:</strong>
  <ul>
-  <li>Planned with: Trello og Github, Kanban and</li>
-  <li> Prototype made in: Adobe XD or Figma,</li>
-  <li> JS: React,</li>
-  <li>CSS: CSS Framework, like Bootstrap, CSS Modules or Style components,</li>
-  <li>Deployed with: Netlify or Github pages.</li>
+  <li>Planned application: Trello og Github Projects</li>
+  <li> Design application: Adobe XD, Figma or Sketch</li>
+  <li> Javascript Framework: React(>16)</li>
+  <li>CSS Framework: Bootstrap(>5), Tailwind(>3), CSS Modules or Style components, MUI(>5</li>
+  <li>Hosting service: Netlify or Github pages.</li>
 
 <h2>Getting started</h2>
 
-<p>This app is built using npm and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css.There is several dependencies both for styling and components.</p<>
+<p>This app is built using npm and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css.There is several dependencies both for styling and components.
+The link to the prototype for reference: </p<>
 
 <h2>Installing</h2>
 
-<p>This website is built in Visual Studio Code and the repository is made in Github. To download the code to participate in the project follow link.</p>
+<p>This website is built in Visual Studio Code and the repository is made in Github.</p>
 
 <ol>
 <li>1. Clone the repo: https://github.com/Mokki78/holidaze</li>
@@ -43,14 +44,22 @@ There is a search option where you can find venues by name.
    <li> npm</li>
     <li>Prettier</li> 
     <li>ESTLint</li>
-    <li>React Bootstrap</li>   
-    <li>React Typeahead</li>
-    <li>React</li>    
-     <li>Awesome icons</li>
+    <li>React Bootstrap v.2.9.0</li> 
+    <li>Bootstrap.v.5.3.2</li> 
+    <li>React Bootstrap typeahead v.6.3.2</li>
+    <li>React date range v.1.4.0</li> 
+    <li>React dom v.18.2.0</li> 
+    <li>React modal v.3.16.1</li>    
+    <li>React overlays v.5.2.1</li> 
+    <li>React router dom v.6.17.0</li> 
+    <li>React toast v.1.0.3</li> 
+    <li>Reactjs-popup v.2.0.6</li> 
+    <li>@fortawesome/react-fontawesome v.0.2.0</li>
+    <li>@fortawesome/free-solid-svg-icons v.6.4.2</li>
 
-<H2>Contributing</h2>
+<h2>Contributing</h2>
 
-<p>To contribute please do a pull request and check out the coding that is done so far.</p>
+<p>To contribute please do a pull request and check out the prototype and compare to the app to see if there could be any improvements made.</p>
 
 <h2>Contact</h2>
 
