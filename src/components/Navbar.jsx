@@ -45,11 +45,11 @@ export function NavBar() {
 
               <NavDropdown title={userDetails.name} id="basic-nav-dropdown">
                 {userDetails.venueManager === true ? (
-                  <NavDropdown.Item href="/admin">Admin page</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/admin">Admin page</NavDropdown.Item>
                 ) : (
-                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
                 )}
-                <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/logout">Logout</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           )}
@@ -57,8 +57,8 @@ export function NavBar() {
           {!userDetails ? (
             <Nav className="me-auto text-center ms-md-auto">
               <NavDropdown title="Register/Login" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/register">Register</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           ) : userDetails.venueManager ? (

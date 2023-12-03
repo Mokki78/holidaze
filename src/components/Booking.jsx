@@ -12,8 +12,7 @@ export const Booking = ({
   selectedDateRange,
   onDateRangeChange,
   guests,
-
-  setGuests,
+ setGuests,
   onDisabledDateRangesChange,
 }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -80,11 +79,6 @@ export const Booking = ({
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="bookingFormContainer">
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
       </div>
     </Container>
   );
