@@ -492,6 +492,6 @@ code {
 
 @media screen and (max-width: 800px) {
   h1 {
-    display: none;
+    font-size: 15px;
   }
 }
