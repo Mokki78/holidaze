@@ -4,6 +4,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Reserve } from "../components/Reserve";
 import { Loader } from "../components/Spinner";
 import { Helmet } from "react-helmet";
+import { faMugSaucer } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide } from "@fortawesome/free-solid-svg-icons";
+import { faDog } from "@fortawesome/free-solid-svg-icons";
+import { faWifi } from "@fortawesome/free-solid-svg-icons";
+import { faBed } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function SingleVenue(disabledDateRanges) {
   const [data, setData] = useState([]);
@@ -52,12 +58,13 @@ export function SingleVenue(disabledDateRanges) {
     if (userDetails) {
       setOpenModal(true);
     } else {
+      alert("You have to login to make a booking.");
       navigate("/login");
     }
   };
 
   if (isError) {
-    return <div>Error</div>;
+    return <div>There was an error collecting data.</div>;
   }
 
   return (
@@ -75,40 +82,71 @@ export function SingleVenue(disabledDateRanges) {
             <meta name="keywords" content="Single venue react booking app" />
           </Helmet>
           <Row>
-            <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 mt-5 mx-5">
-              <h1 className="title">{data.name}</h1>
-              <img
-                src={data.media}
-                className="img-fluid"
-                alt={data.name}
-                maxWidth="150px"
-                style={{ minWidth: "150px" }}
-              />
-            </Col>
-            <Col className="col-10-md d-flex flex-column align-items-center pt-5 pb-md-5 bg-white">
-              <p>{data.location.city + ", " + data.location.country} </p>
+            <div className="singleVenue d-flex flex-row">
+              <Col className="col-10-md d-flex flex-column align-items-center pt-2 pb-md-5 mt-2 mx-4">
+                <h1 className="title">
+                  {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
+                </h1>
+                <img
+                  src={data.media}
+                  className="img-fluid"
+                  alt={data.name}
+                  maxWidth="150px"
+                  style={{ minWidth: "150px" }}
+                />
+              </Col>
 
-              <p className="p-5 bg-light">{data.description}</p>
-              <div className="col-6">
-                <p>Max guests: {data.maxGuests}</p>
-                <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
-                <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
-              </div>
-              <div className="col-6">
-                <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
-                <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
+              <Col className="col-10-md d-flex flex-column bg-white pt-5 pb-md-5">
+                <div className="d-flex flex-column align-items-center">
+                  <h3>
+                    {data.location.city.charAt(0).toUpperCase() +
+                      data.location.city.slice(1) +
+                      ", " +
+                      data.location.country}
+                  </h3>
 
-                <strong className="bg-light p-2 mb-3 m-2">
-                  Price per night {data.price},-
-                </strong>
-              </div>
+                  <p className="p-3 m-4 bg-light">{data.description}</p>
+                </div>
 
-              <div>
-                <button className="mainButton" onClick={handleClick}>
-                  Check availability
-                </button>
-              </div>
-            </Col>
+                <Row className="d-flex justify-content-center">
+                  <Col className="col-md-3 p-2 m-3">
+                    <div>
+                      <FontAwesomeIcon icon={faBed} />
+                      <p>Max guests: {data.maxGuests}</p>
+                    </div>
+                    <div>
+                      <FontAwesomeIcon icon={faCarSide} />
+                      <p>Parking: {data.meta.parking ? "yes" : "no"}</p>
+                    </div>
+                    <div>
+                      <FontAwesomeIcon icon={faWifi} />
+                      <p>Wifi: {data.meta.wifi ? "yes" : "no"}</p>
+                    </div>
+                  </Col>
+                  <Col className="col-md-3 p-2 m-3">
+                    <div>
+                      <FontAwesomeIcon icon={faMugSaucer} />
+                      <p>Breakfast: {data.meta.breakfast ? "yes" : "no"}</p>
+                    </div>
+                    <div>
+                      <FontAwesomeIcon icon={faDog} />
+                      <p>Pets allowed: {data.meta.pets ? "yes" : "no"}</p>
+                    </div>
+                    <div className="d-flex p-6">
+                      <p className="pt-5">
+                        <b>Price per night {data.price},-</b>
+                      </p>
+                    </div>
+                  </Col>
+                </Row>
+
+                <div className="d-flex justify-content-end mt-auto">
+                  <button className="mainButton" onClick={handleClick}>
+                    Check availability
+                  </button>
+                </div>
+              </Col>
+            </div>
           </Row>
 
           {openModal && (

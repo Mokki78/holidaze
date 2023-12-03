@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
 export const Update = ({
-  
   editFormData,
   handleEditFormChange,
   handleEditFormSubmit,
@@ -14,7 +13,7 @@ export const Update = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openLocalModal, setOpenLocalModal] = useState(true);
 
-  console.log("My Modal", setOpenLocalModal)
+  console.log("My Modal", setOpenLocalModal);
 
   const navigate = useNavigate();
 
@@ -35,7 +34,7 @@ export const Update = ({
                 className="rClose"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log("Close button clicked");
+
                   handleClick(e);
                 }}
               />

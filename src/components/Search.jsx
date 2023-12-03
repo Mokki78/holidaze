@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Form } from "react-bootstrap";
+import { Container, Row, Form, InputGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
@@ -8,7 +10,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 const SEARCH_URI = "https://api.noroff.dev/api/v1/holidaze/venues/";
 
 export const Search = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   // eslint-disable-next-line no-unused-vars
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,16 +71,19 @@ export const Search = () => {
                 className="search d-flex col-12"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <Typeahead
-                  id="product-search"
-                  options={searchOptions}
-                  selected={selectedOption}
-                  onChange={handleSelection}
-                  placeholder="Search for venue"
-                  className="me-2"
-                  icon="prime:search"
-                  height="30px"
-                />
+                <InputGroup>
+                  <Typeahead
+                    id="product-search"
+                    options={searchOptions}
+                    selected={selectedOption}
+                    onChange={handleSelection}
+                    placeholder="Search for venue"
+                    className="me-2"
+                  />
+                  <InputGroup.Text>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </InputGroup.Text>
+                </InputGroup>
               </Form>
             </Row>
           </Container>
@@ -89,4 +94,3 @@ export const Search = () => {
 };
 
 export default Search;
-

@@ -73,13 +73,13 @@ export function LoginAdmin() {
 
   return (
    
-      <div className="row justify-content-md-center mt-5">
+      <div className="row  justify-content-md-center justify-content-sm-center mt-5">
           <Helmet>
             <title>Holidaze Admin Login</title>
             <meta name="description" content="Login for admin account" />
             <meta name="keywords" content="Login admin account react booking app" />
           </Helmet>
-        <div className="col-4">
+        <div className="col-4 col-sm-5 p-sm-1">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title mb-4">Sign In- Admin Account</h5>
@@ -130,7 +130,7 @@ export function LoginAdmin() {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="btn btn-primary btn-block"
+                    className="mainButton"
                    
                   >
                     Login

@@ -55,7 +55,7 @@ export function Login() {
         localStorage.setItem("accessToken",  data.accessToken);
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
         navigate("/profile");
-        console.log(userDetails)
+      
       } else {
         setIsSubmitting(false);
         const errorData = await response.json();
@@ -71,13 +71,13 @@ export function Login() {
 
   return (
     
-      <div className="row justify-content-md-center mt-5">
+      <div className="row justify-content-md-center justify-content-sm-center  mt-5">
            <Helmet>
             <title>Holidaze Login</title>
             <meta name="description" content="Login page for user." />
             <meta name="keywords" content="Login page user account react booking app" />
           </Helmet>
-        <div className="col-4">
+        <div className="col-4 col-sm-5 p-sm-1">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title mb-4">Sign In</h5>
@@ -128,7 +128,7 @@ export function Login() {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="btn btn-primary btn-block"
+                    className="mainButton"
                   >
                     Login
                   </button>

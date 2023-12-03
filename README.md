@@ -58,6 +58,7 @@ After installing a version of the repo on your computer, run npm run start in yo
     <li>React router dom v.6.17.0 https://www.npmjs.com/package/react-router-dom/v/6.17.0</li> 
     <li>React toast v.1.0.3 https://www.npmjs.com/package/react-toast</li> 
     <li>Reactjs-popup v.2.0.6 https://www.npmjs.com/package/reactjs-popup</li> 
+   <li> React toastify v.9.1.3 https://www.npmjs.com/package/react-toastify</li>
     <li>@fortawesome/react-fontawesome v.0.2.0 https://www.npmjs.com/package/@fortawesome/react-fontawesome</li>
     <li>@fortawesome/free-solid-svg-icons v.6.4.2</li>
     </ul>

@@ -1,34 +1,27 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export function Footer() {
+
+export const Footer = () => {
   return (
-    <>
-      <Container>
-        <Row>
-          <Col className="bg-light shadow-sm" style={{ height: "100px" }}>
-            <footer className="d-flex align-item-center">
-              <div className="footer-container">
-                <NavLink to="/" className="footer-link">
-                  Home
-                </NavLink>
-                <NavLink to="/admin" className="footer-link">
-                  Admin
-                </NavLink>
-                <NavLink to="/profile" className="footer-link">
-                  Profile Page
-                </NavLink>
-              </div>
-              <div className="d-flex text-center">
-                <h5 className="footer-copyright">Ecommerce @ 2023</h5>
-              </div>
-            </footer>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container fluid className="footer">
+      <Row className="footer-row">
+        <Col className="bg-light shadow-sm d-flex flex-column align-items-center justify-content-end" style={{ height: "100px" }}>
+          <footer className="w-100">
+            <div className="text-center mb-auto">
+              <Link className="footerLogo" to="/">
+                Holidaze
+              </Link>
+            </div>
+            <div className="text-right">
+              <h5 className="copyrightFooter">Holidaze @2023</h5>
+            </div>
+          </footer>
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default Footer;

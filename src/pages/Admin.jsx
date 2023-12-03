@@ -15,6 +15,7 @@ export function Admin() {
   const [loading, isLoading] = useState(false);
   const [name, setName] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [venues, setVenues] = useState([]);
 
   let letsNavigate = useNavigate();
 
@@ -25,7 +26,7 @@ export function Admin() {
       const { name, avatar } = user;
       setName(name);
       setAvatar(avatar);
-
+      
       isLoading(false);
     } else {
       letsNavigate("/admin_login");
@@ -39,6 +40,9 @@ export function Admin() {
     setOpenModal(true);
   };
 
+  const handleVenueCreated = (newVenue) => {
+    setVenues((prevVenues) => [...prevVenues, newVenue]);
+  };
 
 
 return (
@@ -63,7 +67,7 @@ return (
       </Container>
     )}
      <AdminVenues name={userDetails.name} />
-        {openModal && <AdminCreate setOpenModal={setOpenModal}  />}
+        {openModal && <AdminCreate setOpenModal={setOpenModal}  onVenueCreated={handleVenueCreated} />}
    </div>
 );
 }

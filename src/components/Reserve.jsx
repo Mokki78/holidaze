@@ -3,17 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Booking } from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
   const { dates } = useContext(SearchContext);
   const [guests, setGuests] = useState(1);
 
   const token = localStorage.getItem("accessToken");
-  console.log(token);
 
   const onDisabledDateRangesChange = (ranges) => {
-    // Do something with the disabled date ranges, if needed
     console.log("Disabled Date Ranges changed:", ranges);
   };
 
@@ -66,8 +64,6 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
         console.error("Error while fetching maxGuests:", error);
       });
   }, [venueId]);
-  console.log("My venue id: ", venueId);
-  console.log("MyMaxGuests:", maxGuests);
 
   const handleDateRangeChange = (dateRange) => {
     setSelectedDateRange([dateRange.selection]);
@@ -100,6 +96,7 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
         })
           .then((response) => {
             if (response.ok) {
+              setOpen(false);
               alert("Booking successful!");
             } else {
               alert("Number of booked guests exceeds the maximum limit.");
@@ -114,7 +111,7 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
 
   return (
     <>
-      <Container className="modalOverlay">
+      <Container className="modalOverlayBooking">
         <Booking
           selectedDateRange={selectedDateRange}
           onDateRangeChange={handleDateRangeChange}
@@ -122,12 +119,13 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
           setGuests={setGuests}
           venueId={venueId}
           disabledDateRanges={disabledDateRanges}
-          onDisabledDateRangesChange={onDisabledDateRangesChange}
+          onDisabledDateRangesChange={(ranges) => {
+            console.log("Disabled Date Ranges changed:", ranges);
+          }}
         />
-          <button className="mainButton" onClick={handleClick}>
-              Book now
-            </button>
-          
+        <button className="bookingButton" onClick={handleClick}>
+          Book now
+        </button>
 
         <div>
           <FontAwesomeIcon
@@ -135,9 +133,6 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
             className="rClose"
             onClick={() => setOpen(false)}
           />
-        
-           
-          
         </div>
       </Container>
     </>

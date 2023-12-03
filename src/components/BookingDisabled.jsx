@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Loader } from "../components/Spinner";
+import { Loader } from "./Spinner";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-export const BookingCalender = ({ venueId, onDisabledDateRangesChange, onDateRangeChange}) => {
+export const BookingDisabled = ({
+  venueId,
+  onDisabledDateRangesChange,
+  onDateRangeChange,
+}) => {
   const [bookedDates, setBookedDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -51,9 +55,9 @@ export const BookingCalender = ({ venueId, onDisabledDateRangesChange, onDateRan
   const disabledDateRanges = useMemo(() => {
     const pastDates = [
       {
-        startDate : new Date(0),
-        endDate : new Date(),
-      }
+        startDate: new Date(0),
+        endDate: new Date(),
+      },
     ];
 
     const bookedDateRanges = bookedDates
@@ -63,14 +67,12 @@ export const BookingCalender = ({ venueId, onDisabledDateRangesChange, onDateRan
         }))
       : [];
 
-  return pastDates.concat(bookedDateRanges)
-}, [bookedDates]);
+    return pastDates.concat(bookedDateRanges);
+  }, [bookedDates]);
 
-
-  console.log("My dates:", disabledDateRanges)
+  console.log("My dates:", disabledDateRanges);
 
   useEffect(() => {
-    // Notify the parent component about the updated disabled date ranges
     onDisabledDateRangesChange(disabledDateRanges);
   }, [disabledDateRanges, onDisabledDateRangesChange]);
 
@@ -80,15 +82,16 @@ export const BookingCalender = ({ venueId, onDisabledDateRangesChange, onDateRan
   };
 
   const isDateDisabled = (date) => {
-    return disabledDateRanges.some((range) => date >= range.startDate && date <= range.endDate);
+    return disabledDateRanges.some(
+      (range) => date >= range.startDate && date <= range.endDate
+    );
   };
-
 
   return (
     <div>
       {loading && <Loader />}
-      {error && <p>Error loading dates.</p>}
-      {/* Render the DateRange component with disabledDateRanges */}
+      {error && <p>Error loading dates.Please try again later</p>}
+
       <DateRange
         ranges={selectedDateRange}
         onChange={handleDateRangeChange}
@@ -98,4 +101,4 @@ export const BookingCalender = ({ venueId, onDisabledDateRangesChange, onDateRan
   );
 };
 
-export default BookingCalender;
+export default BookingDisabled;

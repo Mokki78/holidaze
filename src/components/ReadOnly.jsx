@@ -1,13 +1,14 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 export const ReadOnly = ({ venue, handleEditClick, handleDelete }) => {
   const getYesNoValue = (value) => (value ? "Yes" : "No");
 
   return (
     <>
-      <container>
-        <div className="d-flex flex-row">
-          <div className="flex-column">
+      <Container>
+        <div className="p-3">
+          <div className="">
             <h2>{venue.name} </h2>
             <p>Description: {venue.description}</p>
             <p>NOK {venue.price} ,- per night</p>
@@ -21,9 +22,8 @@ export const ReadOnly = ({ venue, handleEditClick, handleDelete }) => {
             <br></br>
             <p>Address: {venue.location.address}</p>
             <p>City: {venue.location.city}</p>
-            <p>Zip: {venue.location.zip}</p>
+
             <p>Country: {venue.location.country}</p>
-            <p>Continent: {venue.location.continent}</p>
           </div>
         </div>
 
@@ -41,7 +41,7 @@ export const ReadOnly = ({ venue, handleEditClick, handleDelete }) => {
         >
           Delete
         </button>
-      </container>
+      </Container>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 
- export const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 
 const INITIAL_STATE = {
   userDetails: JSON.parse(localStorage.getItem("userDetails")) || null,
@@ -34,9 +34,9 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
-      case "SET_ADMIN_STATUS" :
+    case "SET_ADMIN_STATUS":
       return {
-        ...state, 
+        ...state,
         userDetails: {
           ...state.userDetails,
           isAdmin: action.isAdmin,
@@ -48,20 +48,16 @@ const AuthReducer = (state, action) => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE); 
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
- useEffect(() => {
+  useEffect(() => {
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-    if(userDetails) {
+    if (userDetails) {
       const isAdmin = userDetails.isAdmin || userDetails.venueManager === true;
-      dispatch({ type: "SET_ADMIN_STATUS", isAdmin})
-      dispatch({ type: "LOGIN_SUCCESS",payload: userDetails })
+      dispatch({ type: "SET_ADMIN_STATUS", isAdmin });
+      dispatch({ type: "LOGIN_SUCCESS", payload: userDetails });
     }
-
-    console.log(userDetails)
- 
-},[])
-  
+  }, []);
 
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
@@ -74,7 +70,4 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-
-export default AuthContextProvider
-
-
+export default AuthContextProvider;

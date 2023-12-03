@@ -5,7 +5,6 @@ import { Update } from "../components/Update";
 import { Loader } from "../components/Spinner";
 import { Container, Row, Col } from "react-bootstrap";
 
-
 export const AdminVenues = ({ name, setOpenLocalModal }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,13 +59,7 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
     }));
   };
 
-  
-
   useEffect(() => {
-    console.log("Effect triggered");
-    console.log("editFormData:", editFormData);
-    console.log("editVenueId:", editVenueId);
-
     const fetchVenues = async () => {
       try {
         const response = await fetch(
@@ -81,7 +74,7 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
         if (response.ok) {
           const data = await response.json();
           setData(data);
-          setVenue({})
+          setVenue({});
         } else {
           console.error("Error fetching venues");
           setIsError(true);
@@ -152,7 +145,6 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
 
   const handleEditFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form Data before submit:", editFormData);
 
     try {
       const response = await fetch(
@@ -166,8 +158,6 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
           body: JSON.stringify(editFormData),
         }
       );
-
-      console.log("My formdata:", editFormData);
 
       if (response.ok) {
         console.log("Venue updated successfully");
@@ -187,13 +177,13 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
 
   const ShowAdminVenues = () => {
     return (
-      
-        <Container className="pt-5">
-          <h1 className="subTitle">Your venues:</h1>
-          <Row>
-            {data.map((venue) => (
-              <Col className="col-12 col-sm-6 col-md-5 p-3" key={venue.id}>
-                <div className="card h-100 p-2 m-2 d-flex align-items-center">
+      <Container className="pt-5">
+        <h1 className="subTitle">Your venues:</h1>
+        <Row sm={1} md={2} lg={2}>
+          {data.map((venue) => (
+            <Col className="col-12 col-sm-6 p-3 d-flex flex-row" key={venue.id}>
+              <div className="card h-100 p-2 m-2 d-flex align-items-center">
+                <div>
                   <img
                     src={venue.media}
                     height="250px"
@@ -201,27 +191,26 @@ export const AdminVenues = ({ name, setOpenLocalModal }) => {
                     alt={venue.title}
                     style={{ objectFit: "cover" }}
                   />
-
-                  {editVenueId === venue.id ? (
-                    <Update
-                      setOpenLocalModal={setOpenLocalModal}
-                      editFormData={editFormData}
-                      handleEditFormChange={handleEditFormChange}
-                      handleEditFormSubmit={handleEditFormSubmit}
-                    />
-                  ) : (
-                    <ReadOnly
-                      venue={venue}
-                      handleEditClick={handleEditClick}
-                      handleDelete={handleDelete}
-                    />
-                  )}
                 </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-     
+                {editVenueId === venue.id ? (
+                  <Update
+                    setOpenLocalModal={setOpenLocalModal}
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleEditFormSubmit={handleEditFormSubmit}
+                  />
+                ) : (
+                  <ReadOnly
+                    venue={venue}
+                    handleEditClick={handleEditClick}
+                    handleDelete={handleDelete}
+                  />
+                )}
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     );
   };
 

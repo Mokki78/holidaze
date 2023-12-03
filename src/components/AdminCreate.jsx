@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row} from "react-bootstrap";
 
 
-export function AdminCreate({ setOpenModal }) {
+export function AdminCreate({ setOpenModal, onVenueCreated }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
@@ -67,7 +67,8 @@ export function AdminCreate({ setOpenModal }) {
         const data = await response.json();
         setIsSubmitting(false);
         setData(data);
-
+        setOpenModal(false);
+        onVenueCreated()
         alert("You have successfully made a new venue");
       } else {
         setIsSubmitting(false);
@@ -86,8 +87,8 @@ export function AdminCreate({ setOpenModal }) {
   return (
     <>
   
-        <Container className="modalOverlay row justify-content-md-center mt-5">
-          <Row className="myForm col-4">
+        <Container className="modalOverlay">
+          <Row className="col-5">
             <div className="card">
               <div className="card-body">
                 <form onSubmit={(e) => createVenueAction(e)}>
