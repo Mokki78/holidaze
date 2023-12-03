@@ -28,7 +28,7 @@ export function NavBar() {
 
         <NavbarBs.Collapse id="navbarNav">
           <Nav className="me-auto text-center">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link px-5 pb-1" to="/">
               Home
             </Link>
           </Nav>
