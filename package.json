@@ -1,6 +1,6 @@
 {
   "name": "holidaze",
-  "version": "1.14.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
