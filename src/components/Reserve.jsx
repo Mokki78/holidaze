@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import { SearchContext } from "../context/SearchContext";
 import { Container } from "react-bootstrap";
 
 export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
+  // eslint-disable-next-line no-unused-vars
   const { dates } = useContext(SearchContext);
   const [guests, setGuests] = useState(1);
 
