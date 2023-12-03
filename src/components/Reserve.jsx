@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { Booking } from "../components/Booking";
 import { SearchContext } from "../context/SearchContext";
 import { Container } from "react-bootstrap";
@@ -26,7 +26,7 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
     },
   ]);
 
-  async function fetchMaxGuests(venueId) {
+  const fetchMaxGuests = useCallback(async (venueId) => {
     try {
       if (!token) {
         console.error("Access token not found");
@@ -53,8 +53,8 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
       console.error("There was an error fetching maxGuests", error);
     }
 
-    return null;
-  }
+  }, [token]);
+  
 
   useEffect(() => {
     fetchMaxGuests(venueId)
@@ -65,7 +65,7 @@ export const Reserve = ({ setOpen, venueId, disabledDateRanges }) => {
       .catch((error) => {
         console.error("Error while fetching maxGuests:", error);
       });
-  }, [venueId]);
+  }, [fetchMaxGuests,venueId]);
 
   const handleDateRangeChange = (dateRange) => {
     setSelectedDateRange([dateRange.selection]);

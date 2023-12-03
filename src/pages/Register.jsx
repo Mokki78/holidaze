@@ -20,7 +20,7 @@ export function Register() {
     ) {
       navigate("/register");
     }
-  }, []);
+  }, [navigate]);
 
   const registerAction = async (e) => {
     e.preventDefault();

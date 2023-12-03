@@ -34,7 +34,7 @@ export function Profile() {
       alert("Please enter a valid Username or password");
       console.error("Error: userDetails not found or invalid");
     }
-  }, []);
+  }, [letsNavigate]);
 
   const handleClick = () => {
     if (newAvatarUrl) {

@@ -35,7 +35,7 @@ export function Admin() {
 
       console.error("Error: userDetails not found or invalid");
     }
-  }, []);
+  }, [letsNavigate]);
 
   const handleClick = () => {
     setOpenModal(true);
