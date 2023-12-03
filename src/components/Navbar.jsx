@@ -79,13 +79,13 @@ export function NavBar() {
             </>
           )}
 
-          {userDetails && !userDetails.venueManager && (
+          
             <Nav className="align-items-center d-md-none">
               <Link className="nav-link" to="/logout">
                 Logout
               </Link>
             </Nav>
-          )}
+          
         </NavbarBs.Collapse>
       </NavbarBs>
     </Container>

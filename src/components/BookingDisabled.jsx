@@ -51,7 +51,7 @@ export const BookingDisabled = ({
     fetchDates();
   }, [venueId, setBookedDates]);
 
-  // Create an array of disabled date ranges
+
   const disabledDateRanges = useMemo(() => {
     const pastDates = [
       {
