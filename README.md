@@ -1,53 +1,64 @@
 <h1>Project Exam 2- Holidaze</h1>
 <br></br>
-<strong>Description</strong>
+<img width="1516" alt="holidaze" src="https://github.com/Mokki78/holidaze/assets/100276996/590c80f7-bdef-4f5a-aadc-950dd85976e8">
+<p>Single page view of the finished booking app, Holidaze.</p>
+<br></br>
+<h2>Description</h2>
 
-<p>This is the project exam assignment for the 2 years course in Front-End Development at Noroff School of technology and digital media.
+<p>This is the project exam assignment for the 2 year front-end development at Noroff School of Technology and Digital media.
 
-The assignment is to design and develop a booking app with API provided by Noroff : https://docs.noroff.dev.
+The assignment is to design and develop a booking app with API provided by Noroff : https://docs.noroff.dev.</p>
 
- <strong>Requirements for the task:</strong>
- On the main page there is a list of venues. 
- On each venue in the list there is a link to view a single venue.
-There is a search option where you can find venues by name.
-
- The user/customer can register an account and login to a profile page,
- and make bookings for venues when logged in. 
- On users profile page they can see their bookings, and they can change their profile image/avatar.
-
- There is a seperat admin login/register option, and users logged in as admins can create, update and delete
- venues and see their venues on their admin own page/dashboard.
-
- There is also a logout option for both, and on the single venue page there is a booking app where you can check for available dates,
- and logged in users can make a booking.</p>
-
+  <b>Requirements for the task:</b>
+ <ul>
+ <li>on the main/index page there should be a list of venues.</li>
+   <li>each venue in the list has a link to view the single venue.</li>
+   <li>there is a search option where you can find venues by its name.</li>
+    <li>the user/customer can register an account and login to a profile page.</li>
+      <li>the user/customer can make bookings for venues when logged in.</li>
+        <li> on users profile page they can view theis bookings, and they can change their profile image/avatar.</li>
+          <li>there is a seperat admin login/register option, and users logged in as admins can create, update and delete
+ venues.</li>
+        <li>the admin user can view their venues on their admin own page/dashboard.
+.</li>
+   <li>there is a logout function.</li>
+     <li>on the single venue page there is a booking app where you can check for available dates.</li>
+        <li>logged in users can make a booking.</li>
+    
+ 
+ </ul>
 <strong> The booking app is to be developed with:</strong>
+
  <ul>
   <li>Planned application: Trello og Github Projects.</li>
   <li> Design application: Adobe XD, Figma or Sketch.</li>
   <li> Javascript Framework: React(>16).</li>
   <li>CSS Framework: Bootstrap(>5), Tailwind(>3), CSS Modules or Style components, MUI(>5).</li>
   <li>Hosting service: Netlify or Github pages.</li>
+ </ul>
+
+ <h3>Built With</h3>
+ <ol>
+  <li>React v18.2.0</li>
+   <li>React-Bootstrap v9.2.0 </li>
+ </ol>
 
 <h2>Getting started</h2>
-
+<h3>Installing</h3>
 <p>This app is built using npm v.8.19.3 and React v18.2.0, and CSS styling is inline with React-Bootstrap v9.2.0 and some styling in index.css. There are several dependencies both for styling and components.
-The link to the prototype for reference: https://xd.adobe.com/view/fbd19979-8690-421c-9a85-639373ccaf91-ae82/.
-
-After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready to deploy the site run npm run build. For testing
-</p>
-
-<h2>Installing</h2>
+The link to the prototype for reference: https://xd.adobe.com/view/fbd19979-8690-421c-9a85-639373ccaf91-ae82/.</p>
 
 <p>This website is built in Visual Studio Code and the repository is made in Github.</p>
-<p>Clone the repo: https://github.com/Mokki78/holidaze</p>
-
+<ol>
+ <li>Clone the repo:</li>
+ <p>git clone git@github.com/Mokki78/holidaze</p>
+ <li>Install the dependencies:</li>
+ <p>npm install</p>
+</ol>
 <ul>
-<string> Install the dependecies:</strong>
-   <li> npm https://docs.npmjs.com/downloading-and-installing-node-js-and-npm</li>
-    <li>Prettier https://prettier.io/docs/en/install.html</li> 
-    <li>ESTLint https://eslint.org/docs/latest/use/getting-started</li>
-    <li>React Bootstrap v.2.9.0 https://www.npmjs.com/package/react-bootstrap?activeTab=versions</li> 
+    <li>Prettier https://prettier.io/docs/en/install.html</li>
+ <li>ESTLint https://eslint.org/docs/latest/use/getting-started</li>
+ <li>React Bootstrap v.2.9.0 https://www.npmjs.com/package/react-bootstrap?activeTab=versions</li> 
     <li>Bootstrap.v.5.3.2 https://getbootstrap.com/docs/5.3/getting-started/download/</li> 
     <li>React Bootstrap typeahead v.6.3.2 React Bootstrap typeahead v.6.3.2</li>
     <li>React date range v.1.4.0 https://www.npmjs.com/package/react-date-range</li> 
@@ -66,6 +77,7 @@ After installing a version of the repo on your computer, run npm run start in yo
 <h2>Contributing</h2>
 
 <p>To contribute please do a pull request and check out the prototype and compare to the app to see if there could be any improvements made.</p>
+After installing a version of the repo on your computer, run npm run start in your terminal to see the React app on your localhost. When finished with your changes run npm test, and when ready to deploy the site run npm run build. </p>
 
 <h2>Contact</h2>
 
